@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { Github, Linkedin, Mail, ExternalLink, Code2, Server, Database, Container, GitBranch, Cloud, Menu, X, ArrowRight } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Code2, Server, Database, Container, GitBranch, Cloud, Menu, X, ArrowRight, Sun, Moon } from 'lucide-react';
 
 // Inicializar EmailJS
 emailjs.init('tjTCVED0LjhPAnVZs');
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [formMessage, setFormMessage] = useState('');
 
@@ -59,14 +60,26 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900">
+    <div className={`min-h-screen transition-colors duration-300 ${
+      darkMode 
+        ? 'bg-gray-900 text-white' 
+        : 'bg-gray-50 text-gray-900'
+    }`}>
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
+      <nav className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
+        darkMode
+          ? 'bg-gray-800/90 border-b border-gray-700'
+          : 'bg-white/90 border-b border-gray-200'
+      } backdrop-blur-sm`}>
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <button
               onClick={() => scrollToSection('home')}
-              className="flex items-center gap-2 text-xl font-semibold text-gray-900 hover:text-orange-600 transition-colors"
+              className={`flex items-center gap-2 text-xl font-semibold transition-colors ${
+                darkMode
+                  ? 'text-white hover:text-orange-400'
+                  : 'text-gray-900 hover:text-orange-600'
+              }`}
             >
               <Code2 size={28} className="text-orange-600" />
               Niko.dev
@@ -74,27 +87,40 @@ function App() {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex gap-8">
-              <button onClick={() => scrollToSection('skills')} className="text-gray-600 hover:text-orange-600 transition-colors">
+              <button onClick={() => scrollToSection('skills')} className={`transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-400' : 'text-gray-600 hover:text-orange-600'}`}>
                 Habilidades
               </button>
-              <button onClick={() => scrollToSection('projects')} className="text-gray-600 hover:text-orange-600 transition-colors">
+              <button onClick={() => scrollToSection('projects')} className={`transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-400' : 'text-gray-600 hover:text-orange-600'}`}>
                 Proyectos
               </button>
-              <button onClick={() => scrollToSection('about')} className="text-gray-600 hover:text-orange-600 transition-colors">
+              <button onClick={() => scrollToSection('about')} className={`transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-400' : 'text-gray-600 hover:text-orange-600'}`}>
                 Sobre mí
               </button>
-              <button onClick={() => scrollToSection('contact')} className="text-gray-600 hover:text-orange-600 transition-colors">
+              <button onClick={() => scrollToSection('contact')} className={`transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-400' : 'text-gray-600 hover:text-orange-600'}`}>
                 Contacto
               </button>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-gray-600"
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            {/* Mobile Menu Button & Dark Mode Toggle */}
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className={`p-2 rounded-lg transition-colors ${
+                  darkMode
+                    ? 'hover:bg-gray-700'
+                    : 'hover:bg-gray-100'
+                }`}
+                title={darkMode ? 'Light mode' : 'Dark mode'}
+              >
+                {darkMode ? <Sun size={24} className="text-orange-400" /> : <Moon size={24} className="text-gray-600" />}
+              </button>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className={`md:hidden ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
+              >
+                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
 
           {/* Mobile Menu */}
@@ -118,16 +144,16 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-32 pb-20 px-6">
+      <section id="home" className={`pt-32 pb-20 px-6 transition-colors duration-300 ${darkMode ? 'bg-gray-900' : ''}`}>
         <div className="max-w-6xl mx-auto">
           <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <h1 className={`text-5xl md:text-7xl font-bold mb-6 leading-tight ${darkMode ? 'text-white' : ''}`}>
               Martín Nicolás Paneblanco
             </h1>
-            <h2 className="text-2xl md:text-3xl text-gray-600 mb-6">
+            <h2 className={`text-2xl md:text-3xl mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               Arquitecto de Software · Full Stack & DevOps Engineer
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+            <p className={`text-lg md:text-xl leading-relaxed ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
               Diseñando soluciones escalables y automatizando flujos complejos para potenciar equipos de desarrollo. Enfocado en performance, calidad y despliegues sin fricción.
             </p>
             <div className="flex gap-4 mt-8">
@@ -135,7 +161,11 @@ function App() {
                 Contactar
                 <Mail size={18} />
               </a>
-              <a href="#projects" className="inline-flex items-center gap-2 border-2 border-orange-600 text-orange-600 px-6 py-3 rounded-lg hover:bg-orange-600 hover:text-white transition-all font-semibold group">
+              <a href="#projects" className={`inline-flex items-center gap-2 border-2 border-orange-600 px-6 py-3 rounded-lg hover:scale-105 transition-all font-semibold group ${
+                darkMode
+                  ? 'text-orange-400 hover:bg-orange-600 hover:text-white'
+                  : 'text-orange-600 hover:bg-orange-600 hover:text-white'
+              }`}>
                 Ver proyectos
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </a>
@@ -145,7 +175,7 @@ function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 px-6 bg-white">
+      <section id="skills" className={`py-20 px-6 transition-colors duration-300 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold mb-12">Habilidades</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -166,24 +196,32 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-6">
+      <section id="projects" className={`py-20 px-6 transition-colors duration-300 ${darkMode ? 'bg-gray-900' : ''}`}>
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12">Proyectos destacados</h2>
+          <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>Proyectos destacados</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="bg-white p-8 rounded-lg border border-gray-200 hover:border-orange-600 hover:shadow-lg transition-all"
+                className={`p-8 rounded-lg border transition-all ${
+                  darkMode
+                    ? 'bg-gray-800 border-gray-700 hover:border-orange-600 hover:shadow-lg hover:shadow-orange-600/20'
+                    : 'bg-white border-gray-200 hover:border-orange-600 hover:shadow-lg'
+                }`}
               >
-                <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <h3 className={`text-2xl font-bold mb-3 ${darkMode ? 'text-white' : ''}`}>{project.title}</h3>
+                <p className={`mb-4 leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.map((tech, i) => (
                     <span
                       key={i}
-                      className="text-sm px-3 py-1 bg-gray-100 text-gray-700 rounded-full"
+                      className={`text-sm px-3 py-1 rounded-full ${
+                        darkMode
+                          ? 'bg-gray-700 text-gray-200'
+                          : 'bg-gray-100 text-gray-700'
+                      }`}
                     >
                       {tech}
                     </span>
@@ -212,28 +250,28 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6 bg-white">
+      <section id="about" className={`py-20 px-6 transition-colors duration-300 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12">Sobre mí</h2>
+          <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>Sobre mí</h2>
           <div className="max-w-3xl">
-            <p className="text-lg text-gray-600 leading-relaxed mb-6">
+            <p className={`text-lg leading-relaxed mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               Comencé mi carrera en desarrollo web en 2017, y rápidamente descubrí mi pasión por entender 
               cómo funcionan las cosas desde adentro: la infraestructura, la automatización y la arquitectura 
               detrás del software. Esta intersección entre desarrollo y operaciones se convirtió en mi especialidad.
             </p>
-            <p className="text-lg text-gray-600 leading-relaxed mb-6">
+            <p className={`text-lg leading-relaxed mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               He liderado la transformación DevOps en startups y equipos corporativos, implementando
               pipelines CI/CD que redujeron los tiempos de deployment de horas a minutos. Mi enfoque
               une buenas prácticas de desarrollo con una visión de infraestructura como código y cultura DevOps.
             </p>
-            <p className="text-lg text-gray-600 leading-relaxed mb-6">
+            <p className={`text-lg leading-relaxed mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               Mi visión es construir sistemas que no solo funcionen, sino que evolucionen. Busco
               constantemente nuevas formas de hacer que los equipos trabajen más rápido, más seguros
               y con mayor confianza en cada release.
             </p>
             
-            <h3 className="text-2xl font-bold mt-12 mb-6 text-gray-900">Filosofía</h3>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <h3 className={`text-2xl font-bold mt-12 mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Filosofía</h3>
+            <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               Me apasiona conectar piezas: lenguajes, frameworks y servicios en la nube se integran 
               para crear sistemas como redes, donde cada nodo aporta su valor. La estrategia más adecuada 
               se elige según el contexto, y si el problema se puede mapear, se puede resolver. El objetivo 
@@ -244,11 +282,11 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6">
+      <section id="contact" className={`py-20 px-6 transition-colors duration-300 ${darkMode ? 'bg-gray-900' : ''}`}>
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12">Contacto</h2>
+          <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>Contacto</h2>
           <div className="max-w-2xl">
-            <p className="text-lg text-gray-600 mb-8">
+            <p className={`text-lg mb-8 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
               ¿Tenés un proyecto en mente o querés charlar sobre tecnología?
               Estoy siempre abierto a nuevas oportunidades y colaboraciones.
             </p>
@@ -256,7 +294,11 @@ function App() {
             <div className="flex flex-col gap-4 mb-12">
               <a
                 href="mailto:martin.gonzalez@example.com"
-                className="inline-flex items-center gap-3 text-lg hover:text-orange-600 transition-colors group"
+                className={`inline-flex items-center gap-3 text-lg transition-colors group ${
+                  darkMode
+                    ? 'text-gray-300 hover:text-orange-400'
+                    : 'text-gray-900 hover:text-orange-600'
+                }`}
               >
                 <Mail className="text-orange-600" size={24} />
                 <span>martin.gonzalez@example.com</span>
@@ -265,7 +307,11 @@ function App() {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 text-lg hover:text-orange-600 transition-colors group"
+                className={`inline-flex items-center gap-3 text-lg transition-colors group ${
+                  darkMode
+                    ? 'text-gray-300 hover:text-orange-400'
+                    : 'text-gray-900 hover:text-orange-600'
+                }`}
               >
                 <Github className="text-orange-600" size={24} />
                 <span>github.com/martingonzalez</span>
