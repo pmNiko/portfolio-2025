@@ -1,8 +1,14 @@
 import { useState } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Code2, Server, Database, Container, GitBranch, Cloud, Menu, X } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import { Github, Linkedin, Mail, ExternalLink, Code2, Server, Database, Container, GitBranch, Cloud, Menu, X, ArrowRight } from 'lucide-react';
+
+// Inicializar EmailJS
+emailjs.init('tjTCVED0LjhPAnVZs');
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [formMessage, setFormMessage] = useState('');
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -60,9 +66,10 @@ function App() {
           <div className="flex justify-between items-center">
             <button
               onClick={() => scrollToSection('home')}
-              className="text-xl font-semibold text-gray-900 hover:text-orange-600 transition-colors"
+              className="flex items-center gap-2 text-xl font-semibold text-gray-900 hover:text-orange-600 transition-colors"
             >
-              Portfolio
+              <Code2 size={28} className="text-orange-600" />
+              Niko.dev
             </button>
 
             {/* Desktop Menu */}
@@ -115,22 +122,22 @@ function App() {
         <div className="max-w-6xl mx-auto">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Martín González
+              Martín Nicolás Paneblanco
             </h1>
             <h2 className="text-2xl md:text-3xl text-gray-600 mb-6">
-              Full Stack Developer & DevOps Engineer
+              Arquitecto de Software · Full Stack & DevOps Engineer
             </h2>
             <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-              Especializado en construir arquitecturas escalables y automatizar procesos de desarrollo.
-              Apasionado por crear soluciones que impactan directamente en la eficiencia de los equipos.
+              Diseñando soluciones escalables y automatizando flujos complejos para potenciar equipos de desarrollo. Enfocado en performance, calidad y despliegues sin fricción.
             </p>
             <div className="flex gap-4 mt-8">
-              <a href="#contact" className="inline-flex items-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-all hover:scale-105">
+              <a href="#contact" className="inline-flex items-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-all hover:scale-105 font-semibold">
                 Contactar
                 <Mail size={18} />
               </a>
-              <a href="#projects" className="inline-flex items-center gap-2 border-2 border-gray-900 text-gray-900 px-6 py-3 rounded-lg hover:bg-gray-900 hover:text-white transition-all">
+              <a href="#projects" className="inline-flex items-center gap-2 border-2 border-orange-600 text-orange-600 px-6 py-3 rounded-lg hover:bg-orange-600 hover:text-white transition-all font-semibold group">
                 Ver proyectos
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           </div>
@@ -210,19 +217,27 @@ function App() {
           <h2 className="text-4xl font-bold mb-12">Sobre mí</h2>
           <div className="max-w-3xl">
             <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              Comencé mi carrera en desarrollo web hace 8 años, y rápidamente descubrí mi pasión por
-              la infraestructura y automatización. Esta intersección entre desarrollo y operaciones se
-              convirtió en mi especialidad.
+              Comencé mi carrera en desarrollo web en 2017, y rápidamente descubrí mi pasión por entender 
+              cómo funcionan las cosas desde adentro: la infraestructura, la automatización y la arquitectura 
+              detrás del software. Esta intersección entre desarrollo y operaciones se convirtió en mi especialidad.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed mb-6">
               He liderado la transformación DevOps en startups y equipos corporativos, implementando
               pipelines CI/CD que redujeron los tiempos de deployment de horas a minutos. Mi enfoque
-              combina código limpio con infraestructura como código.
+              une buenas prácticas de desarrollo con una visión de infraestructura como código y cultura DevOps.
             </p>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-lg text-gray-600 leading-relaxed mb-6">
               Mi visión es construir sistemas que no solo funcionen, sino que evolucionen. Busco
-              constantemente nuevas formas de hacer que los equipos trabajen más rápido, más seguro
+              constantemente nuevas formas de hacer que los equipos trabajen más rápido, más seguros
               y con mayor confianza en cada release.
+            </p>
+            
+            <h3 className="text-2xl font-bold mt-12 mb-6 text-gray-900">Filosofía</h3>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Me apasiona conectar piezas: lenguajes, frameworks y servicios en la nube se integran 
+              para crear sistemas como redes, donde cada nodo aporta su valor. La estrategia más adecuada 
+              se elige según el contexto, y si el problema se puede mapear, se puede resolver. El objetivo 
+              es que esas soluciones sean replicables, escalables y elegantes, sumando siempre al equipo.
             </p>
           </div>
         </div>
@@ -266,7 +281,40 @@ function App() {
               </a>
             </div>
 
-            <form className="space-y-6">
+            <form 
+              onSubmit={async (e) => {
+                e.preventDefault();
+                setFormStatus('loading');
+                
+                const form = e.currentTarget as HTMLFormElement;
+                const nameInput = form.querySelector('[name="name"]') as HTMLInputElement;
+                const emailInput = form.querySelector('[name="email"]') as HTMLInputElement;
+                const messageInput = form.querySelector('[name="message"]') as HTMLTextAreaElement;
+                
+                try {
+                  await emailjs.send(
+                    'service_nceqg4c',
+                    'template_o9pql6w',
+                    {
+                      from_name: nameInput.value,
+                      from_email: emailInput.value,
+                      message: messageInput.value,
+                      to_email: 'niko.dev.contact@gmail.com'
+                    }
+                  );
+                  
+                  setFormStatus('success');
+                  setFormMessage('¡Mensaje enviado! Me contactaré pronto.');
+                  form.reset();
+                  setTimeout(() => setFormStatus('idle'), 5000);
+                } catch (error) {
+                  setFormStatus('error');
+                  setFormMessage('Error al enviar el mensaje. Intenta de nuevo.');
+                  console.error('EmailJS error:', error);
+                }
+              }}
+              className="space-y-6"
+            >
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
                   Nombre
@@ -274,6 +322,8 @@ function App() {
                 <input
                   type="text"
                   id="name"
+                  name="name"
+                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-600 focus:ring-1 focus:ring-orange-600 transition-colors"
                   placeholder="Tu nombre"
                 />
@@ -285,6 +335,8 @@ function App() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
+                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-600 focus:ring-1 focus:ring-orange-600 transition-colors"
                   placeholder="tu@email.com"
                 />
@@ -295,16 +347,29 @@ function App() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
+                  required
                   rows={5}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-600 focus:ring-1 focus:ring-orange-600 transition-colors resize-none"
                   placeholder="Contame sobre tu proyecto..."
                 />
               </div>
+              {formStatus === 'success' && (
+                <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-700">
+                  {formMessage}
+                </div>
+              )}
+              {formStatus === 'error' && (
+                <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+                  {formMessage}
+                </div>
+              )}
               <button
                 type="submit"
-                className="w-full bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-all hover:scale-105 font-medium"
+                disabled={formStatus === 'loading'}
+                className="w-full bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-all hover:scale-105 font-medium disabled:opacity-50 disabled:hover:scale-100"
               >
-                Enviar mensaje
+                {formStatus === 'loading' ? 'Enviando...' : 'Enviar mensaje'}
               </button>
             </form>
           </div>
@@ -314,7 +379,7 @@ function App() {
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-gray-200 bg-white">
         <div className="max-w-6xl mx-auto text-center text-gray-600">
-          <p>© 2025 Martín González. Todos los derechos reservados.</p>
+          <p>© 2025 Martín Nicolás Paneblanco. Todos los derechos reservados.</p>
         </div>
       </footer>
     </div>
