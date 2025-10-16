@@ -210,7 +210,7 @@ function App() {
                 title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
                 aria-label={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
               >
-                {language === 'es' ? '🇬🇧' : '🇪🇸'}
+                {language === 'es' ? '🇦🇷' : '🇺🇸'}
               </button>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
