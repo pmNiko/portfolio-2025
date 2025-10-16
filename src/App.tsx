@@ -103,19 +103,18 @@ function App() {
   };
 
   const skills = [
-    { name: 'Frontend', icon: Code2 },
-    { name: 'Backend', icon: Server },
-    { name: 'Base de datos', icon: Database },
-    { name: 'AWS / Azure / Google', icon: Cloud },
-    { name: 'Expo Android / iOS', icon: Smartphone },
-    { name: 'Pipelines', icon: Github },
-    { name: 'Firebase / Supabase', icon: Zap },
-    { name: 'Sysadmin', icon: Code },
-    { name: 'OAuth', icon: User2 },
-    { name: 'Mercado Pago / Stripe', icon: CreditCard },
-    { name: 'Nginx', icon: Network },
-    { name: 'MCP', icon: Plug },
-    
+    { name: 'Frontend', icon: Code2, tooltip: 'React, Tailwind CSS, TypeScript' },
+    { name: 'Backend', icon: Server, tooltip: 'Node.js, Express, FastAPI, Python' },
+    { name: 'SQL / NoSQL', icon: Database, tooltip: 'PostgreSQL, MongoDB, Firebase' },
+    { name: 'AWS / Azure / Google', icon: Cloud, tooltip: 'EC2, S3, Cloud Functions' },
+    { name: 'Expo Android / iOS', icon: Smartphone, tooltip: 'React Native, Expo SDK' },
+    { name: 'CI/CD', icon: Github, tooltip: 'GitHub Actions, Jenkins' },
+    { name: 'Firebase / Supabase', icon: Zap, tooltip: 'Real-time DB, Auth, Hosting' },
+    { name: 'Sysadmin / DevOps', icon: Code, tooltip: 'Docker, Kubernetes, Dokploy, Linux' },
+    { name: 'OAuth', icon: User2, tooltip: 'OAuth2, Google Auth' },
+    { name: 'Mercado Pago / Stripe', icon: CreditCard, tooltip: 'Pasarela de pagos, webhooks' },
+    { name: 'Nginx', icon: Network, tooltip: 'Reverse proxy, SSL, load balancing' },
+    { name: 'MCP', icon: Plug, tooltip: 'Claude, Cursor, Windsurf, n8n' },    
   ];
 
   const projects = [
@@ -291,16 +290,23 @@ function App() {
               return (
                 <div
                   key={index}
-                  className={`flex items-center gap-3 p-4 border rounded-lg transition-all group ${
+                  className={`flex items-center gap-3 p-4 border rounded-lg transition-all group relative ${
                     darkMode
                       ? 'bg-gray-700 border-gray-600 hover:border-orange-600 hover:shadow-lg hover:shadow-orange-600/20'
                       : 'border-gray-200 hover:border-orange-600 hover:shadow-md'
                   }`}
+                  title={skill.tooltip}
                 >
                   <Icon className={`group-hover:text-orange-600 transition-colors ${
                     darkMode ? 'text-gray-400' : 'text-gray-600'
                   }`} size={24} />
                   <span className={`font-medium ${darkMode ? 'text-gray-100' : ''}`}>{skill.name}</span>
+                  {/* Tooltip */}
+                  <div className={`absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 rounded text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none ${
+                    darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-900 text-white'
+                  }`}>
+                    {skill.tooltip}
+                  </div>
                 </div>
               );
             })}
