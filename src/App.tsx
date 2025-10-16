@@ -5,11 +5,94 @@ import { Github, Linkedin, Mail, ExternalLink, Code2, Server, Database, Containe
 // Inicializar EmailJS
 emailjs.init('tjTCVED0LjhPAnVZs');
 
+// Traducciones
+const translations = {
+  es: {
+    nav: {
+      skills: 'Habilidades',
+      projects: 'Proyectos',
+      about: 'Sobre mí',
+      contact: 'Contacto',
+    },
+    hero: {
+      name: 'Martín Nicolás Paneblanco',
+      title: 'Arquitecto de Software · Full Stack & DevOps Engineer',
+      description: 'Diseñando soluciones escalables y automatizando flujos complejos para potenciar equipos de desarrollo. Enfocado en performance, calidad y despliegues sin fricción.',
+      contactBtn: 'Contactar',
+      projectsBtn: 'Ver proyectos',
+    },
+    skills: 'Habilidades',
+    badges: 'Medallas',
+    projects: 'Proyectos destacados',
+    about: 'Sobre mí',
+    aboutTitle: 'Sobre mí',
+    aboutText1: 'Comencé mi carrera en desarrollo web en 2017, y rápidamente descubrí mi pasión por entender cómo funcionan las cosas desde adentro: la infraestructura, la automatización y la arquitectura detrás del software. Esta intersección entre desarrollo y operaciones se convirtió en mi especialidad.',
+    aboutText2: 'He liderado la transformación DevOps en startups y equipos corporativos, implementando pipelines CI/CD que redujeron los tiempos de deployment de horas a minutos. Mi enfoque une buenas prácticas de desarrollo con una visión de infraestructura como código y cultura DevOps.',
+    aboutText3: 'Mi visión es construir sistemas que no solo funcionen, sino que evolucionen. Busco constantemente nuevas formas de hacer que los equipos trabajen más rápido, más seguros y con mayor confianza en cada release.',
+    philosophy: 'Filosofía',
+    philosophyText: 'Me apasiona conectar piezas: lenguajes, frameworks y servicios en la nube se integran para crear sistemas como redes, donde cada nodo aporta su valor. La estrategia más adecuada se elige según el contexto, y si el problema se puede mapear, se puede resolver. El objetivo es que esas soluciones sean replicables, escalables y elegantes, sumando siempre al equipo.',
+    contact: 'Contacto',
+    contactDescription: '¿Tenés un proyecto en mente o querés charlar sobre tecnología? Estoy siempre abierto a nuevas oportunidades y colaboraciones.',
+    form: {
+      name: 'Nombre',
+      email: 'Email',
+      message: 'Mensaje',
+      send: 'Enviar mensaje',
+      sending: 'Enviando...',
+      success: '¡Mensaje enviado! Me contactaré pronto.',
+      error: 'Error al enviar el mensaje. Intenta de nuevo.',
+      required: 'requerido',
+    },
+    footer: '© 2025 Martín Nicolás Paneblanco. Todos los derechos reservados.',
+  },
+  en: {
+    nav: {
+      skills: 'Skills',
+      projects: 'Projects',
+      about: 'About',
+      contact: 'Contact',
+    },
+    hero: {
+      name: 'Martín Nicolás Paneblanco',
+      title: 'Software Architect · Full Stack & DevOps Engineer',
+      description: 'Designing scalable solutions and automating complex workflows to empower development teams. Focused on performance, quality, and frictionless deployments.',
+      contactBtn: 'Contact',
+      projectsBtn: 'View projects',
+    },
+    skills: 'Skills',
+    badges: 'Badges',
+    projects: 'Featured Projects',
+    about: 'About',
+    aboutTitle: 'About Me',
+    aboutText1: 'I started my web development career in 2017, and quickly discovered my passion for understanding how things work under the hood: infrastructure, automation, and the architecture behind software. This intersection between development and operations became my specialty.',
+    aboutText2: 'I\'ve led DevOps transformations in startups and corporate teams, implementing CI/CD pipelines that reduced deployment times from hours to minutes. My approach combines development best practices with infrastructure-as-code and DevOps culture.',
+    aboutText3: 'My vision is to build systems that not only work, but evolve. I constantly seek new ways to make teams work faster, safer, and with greater confidence in every release.',
+    philosophy: 'Philosophy',
+    philosophyText: 'I\'m passionate about connecting pieces: languages, frameworks, and cloud services integrate to create systems like networks, where each node brings its value. The most appropriate strategy is chosen based on context, and if a problem can be mapped, it can be solved. The goal is for those solutions to be replicable, scalable, and elegant, always adding to the team.',
+    contact: 'Contact',
+    contactDescription: 'Do you have a project in mind or want to chat about technology? I\'m always open to new opportunities and collaborations.',
+    form: {
+      name: 'Name',
+      email: 'Email',
+      message: 'Message',
+      send: 'Send message',
+      sending: 'Sending...',
+      success: 'Message sent! I\'ll contact you soon.',
+      error: 'Error sending message. Try again.',
+      required: 'required',
+    },
+    footer: '© 2025 Martín Nicolás Paneblanco. All rights reserved.',
+  }
+};
+
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [language, setLanguage] = useState<'es' | 'en'>('es');
   const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [formMessage, setFormMessage] = useState('');
+
+  const t = translations[language];
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -89,16 +172,16 @@ function App() {
             {/* Desktop Menu */}
             <div className="hidden md:flex gap-8">
               <button onClick={() => scrollToSection('skills')} className={`transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-400' : 'text-gray-600 hover:text-orange-600'}`}>
-                Habilidades
+                {t.nav.skills}
               </button>
               <button onClick={() => scrollToSection('projects')} className={`transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-400' : 'text-gray-600 hover:text-orange-600'}`}>
-                Proyectos
+                {t.nav.projects}
               </button>
               <button onClick={() => scrollToSection('about')} className={`transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-400' : 'text-gray-600 hover:text-orange-600'}`}>
-                Sobre mí
+                {t.nav.about}
               </button>
               <button onClick={() => scrollToSection('contact')} className={`transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-400' : 'text-gray-600 hover:text-orange-600'}`}>
-                Contacto
+                {t.nav.contact}
               </button>
             </div>
 
@@ -118,6 +201,18 @@ function App() {
                 {darkMode ? <Sun size={24} className="text-orange-400" aria-hidden="true" /> : <Moon size={24} className="text-gray-600" aria-hidden="true" />}
               </button>
               <button
+                onClick={() => setLanguage(language === 'es' ? 'en' : 'es')}
+                className={`p-2 rounded-lg transition-colors text-lg ${
+                  darkMode
+                    ? 'hover:bg-gray-700'
+                    : 'hover:bg-gray-100'
+                }`}
+                title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+                aria-label={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+              >
+                {language === 'es' ? '🇬🇧' : '🇪🇸'}
+              </button>
+              <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className={`md:hidden ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
                 aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
@@ -132,16 +227,16 @@ function App() {
           {mobileMenuOpen && (
             <div className="md:hidden mt-4 pb-4 flex flex-col gap-4">
               <button onClick={() => scrollToSection('skills')} className="text-gray-600 hover:text-orange-600 transition-colors text-left">
-                Habilidades
+                {t.nav.skills}
               </button>
               <button onClick={() => scrollToSection('projects')} className="text-gray-600 hover:text-orange-600 transition-colors text-left">
-                Proyectos
+                {t.nav.projects}
               </button>
               <button onClick={() => scrollToSection('about')} className="text-gray-600 hover:text-orange-600 transition-colors text-left">
-                Sobre mí
+                {t.nav.about}
               </button>
               <button onClick={() => scrollToSection('contact')} className="text-gray-600 hover:text-orange-600 transition-colors text-left">
-                Contacto
+                {t.nav.contact}
               </button>
             </div>
           )}
@@ -153,17 +248,17 @@ function App() {
         <div className="max-w-6xl mx-auto">
           <div className="max-w-3xl">
             <h1 className={`text-5xl md:text-7xl font-bold mb-6 leading-tight ${darkMode ? 'text-white' : ''}`}>
-              Martín Nicolás Paneblanco
+              {t.hero.name}
             </h1>
             <h2 className={`text-2xl md:text-3xl mb-6 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
-              Arquitecto de Software · Full Stack & DevOps Engineer
+              {t.hero.title}
             </h2>
             <p className={`text-lg md:text-xl leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-              Diseñando soluciones escalables y automatizando flujos complejos para potenciar equipos de desarrollo. Enfocado en performance, calidad y despliegues sin fricción.
+              {t.hero.description}
             </p>
             <div className="flex gap-4 mt-8">
               <a href="#contact" className="inline-flex items-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-all hover:scale-105 font-semibold" aria-label="Ir a la sección de contacto">
-                Contactar
+                {t.hero.contactBtn}
                 <Mail size={18} aria-hidden="true" />
               </a>
               <a href="#projects" className={`inline-flex items-center gap-2 border-2 px-6 py-3 rounded-lg hover:scale-105 transition-all font-semibold group ${
@@ -171,7 +266,7 @@ function App() {
                   ? 'border-gray-600 text-gray-300 hover:border-orange-600 hover:bg-orange-600 hover:text-white'
                   : 'border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'
               }`} aria-label="Ver proyectos destacados">
-                Ver proyectos
+                {t.hero.projectsBtn}
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </a>
             </div>
@@ -182,7 +277,7 @@ function App() {
       {/* Skills Section */}
       <section id="skills" className={`py-20 px-6 transition-colors duration-300 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-6xl mx-auto">
-          <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>Habilidades</h2>
+          <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>{t.skills}</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {skills.map((skill, index) => {
               const Icon = skill.icon;
@@ -209,7 +304,7 @@ function App() {
       {/* Badges/Medallas Section */}
       <section id="badges" className={`py-20 px-6 transition-colors duration-300 ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
         <div className="max-w-6xl mx-auto">
-          <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>Medallas</h2>
+          <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>{t.badges}</h2>
           <div className="grid grid-cols-4 md:grid-cols-7 gap-4">
             {[
               { name: 'Node.js', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
@@ -271,7 +366,7 @@ function App() {
       {/* Projects Section */}
       <section id="projects" className={`py-20 px-6 transition-colors duration-300 ${darkMode ? 'bg-gray-900' : ''}`}>
         <div className="max-w-6xl mx-auto">
-          <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>Proyectos destacados</h2>
+          <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>{t.projects}</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {projects.map((project, index) => (
               <div
@@ -327,30 +422,21 @@ function App() {
       {/* About Section */}
       <section id="about" className={`py-20 px-6 transition-colors duration-300 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-6xl mx-auto">
-          <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>Sobre mí</h2>
+          <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>{t.aboutTitle}</h2>
           <div className="max-w-3xl">
             <p className={`text-lg leading-relaxed mb-6 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
-              Comencé mi carrera en desarrollo web en 2017, y rápidamente descubrí mi pasión por entender 
-              cómo funcionan las cosas desde adentro: la infraestructura, la automatización y la arquitectura 
-              detrás del software. Esta intersección entre desarrollo y operaciones se convirtió en mi especialidad.
+              {t.aboutText1}
             </p>
             <p className={`text-lg leading-relaxed mb-6 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
-              He liderado la transformación DevOps en startups y equipos corporativos, implementando
-              pipelines CI/CD que redujeron los tiempos de deployment de horas a minutos. Mi enfoque
-              une buenas prácticas de desarrollo con una visión de infraestructura como código y cultura DevOps.
+              {t.aboutText2}
             </p>
             <p className={`text-lg leading-relaxed mb-6 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
-              Mi visión es construir sistemas que no solo funcionen, sino que evolucionen. Busco
-              constantemente nuevas formas de hacer que los equipos trabajen más rápido, más seguros
-              y con mayor confianza en cada release.
+              {t.aboutText3}
             </p>
             
-            <h3 className={`text-2xl font-bold mt-12 mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Filosofía</h3>
+            <h3 className={`text-2xl font-bold mt-12 mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t.philosophy}</h3>
             <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
-              Me apasiona conectar piezas: lenguajes, frameworks y servicios en la nube se integran 
-              para crear sistemas como redes, donde cada nodo aporta su valor. La estrategia más adecuada 
-              se elige según el contexto, y si el problema se puede mapear, se puede resolver. El objetivo 
-              es que esas soluciones sean replicables, escalables y elegantes, sumando siempre al equipo.
+              {t.philosophyText}
             </p>
           </div>
         </div>
@@ -359,11 +445,10 @@ function App() {
       {/* Contact Section */}
       <section id="contact" className={`py-20 px-6 transition-colors duration-300 ${darkMode ? 'bg-gray-900' : ''}`}>
         <div className="max-w-6xl mx-auto">
-          <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>Contacto</h2>
+          <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>{t.contact}</h2>
           <div className="max-w-2xl">
             <p className={`text-lg mb-8 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
-              ¿Tenés un proyecto en mente o querés charlar sobre tecnología?
-              Estoy siempre abierto a nuevas oportunidades y colaboraciones.
+              {t.contactDescription}
             </p>
 
             <div className="flex flex-col gap-4 mb-12">
@@ -432,12 +517,12 @@ function App() {
                   );
                   
                   setFormStatus('success');
-                  setFormMessage('¡Mensaje enviado! Me contactaré pronto.');
+                  setFormMessage(t.form.success);
                   form.reset();
                   setTimeout(() => setFormStatus('idle'), 5000);
                 } catch (error) {
                   setFormStatus('error');
-                  setFormMessage('Error al enviar el mensaje. Intenta de nuevo.');
+                  setFormMessage(t.form.error);
                   console.error('EmailJS error:', error);
                 }
               }}
@@ -447,7 +532,7 @@ function App() {
             >
               <div>
                 <label htmlFor="name" className={`block text-sm font-medium mb-2 ${darkMode ? 'text-white' : ''}`}>
-                  Nombre <span aria-label="requerido" className="text-orange-600">*</span>
+                  {t.form.name} <span aria-label={t.form.required} className="text-orange-600">*</span>
                 </label>
                 <input
                   type="text"
@@ -460,12 +545,12 @@ function App() {
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
                       : 'border-gray-300 text-gray-900 placeholder-gray-500'
                   }`}
-                  placeholder="Tu nombre"
+                  placeholder={language === 'es' ? 'Tu nombre' : 'Your name'}
                 />
               </div>
               <div>
                 <label htmlFor="email" className={`block text-sm font-medium mb-2 ${darkMode ? 'text-white' : ''}`}>
-                  Email <span aria-label="requerido" className="text-orange-600">*</span>
+                  {t.form.email} <span aria-label={t.form.required} className="text-orange-600">*</span>
                 </label>
                 <input
                   type="email"
@@ -483,7 +568,7 @@ function App() {
               </div>
               <div>
                 <label htmlFor="message" className={`block text-sm font-medium mb-2 ${darkMode ? 'text-white' : ''}`}>
-                  Mensaje <span aria-label="requerido" className="text-orange-600">*</span>
+                  {t.form.message} <span aria-label={t.form.required} className="text-orange-600">*</span>
                 </label>
                 <textarea
                   id="message"
@@ -496,7 +581,7 @@ function App() {
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
                       : 'border-gray-300 text-gray-900 placeholder-gray-500'
                   }`}
-                  placeholder="Contame sobre tu proyecto..."
+                  placeholder={language === 'es' ? 'Contame sobre tu proyecto...' : 'Tell me about your project...'}
                 />
               </div>
               {formStatus === 'success' && (
@@ -522,7 +607,7 @@ function App() {
                 disabled={formStatus === 'loading'}
                 className="w-full bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-all hover:scale-105 font-medium disabled:opacity-50 disabled:hover:scale-100"
               >
-                {formStatus === 'loading' ? 'Enviando...' : 'Enviar mensaje'}
+                {formStatus === 'loading' ? t.form.sending : t.form.send}
               </button>
             </form>
           </div>
@@ -536,7 +621,7 @@ function App() {
           : 'border-gray-200 bg-white'
       }`}>
         <div className={`max-w-6xl mx-auto text-center ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-          <p>© 2025 Martín Nicolás Paneblanco. Todos los derechos reservados.</p>
+          <p>{t.footer}</p>
         </div>
       </footer>
     </div>
