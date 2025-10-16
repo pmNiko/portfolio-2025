@@ -26,11 +26,12 @@ const translations = {
     projects: 'Proyectos destacados',
     about: 'Sobre mí',
     aboutTitle: 'Sobre mí',
-    aboutText1: 'Comencé mi carrera en desarrollo web en 2017, y rápidamente descubrí mi pasión por entender cómo funcionan las cosas desde adentro: la infraestructura, la automatización y la arquitectura detrás del software. Esta intersección entre desarrollo y operaciones se convirtió en mi especialidad.',
-    aboutText2: 'He liderado la transformación DevOps en startups y equipos corporativos, implementando pipelines CI/CD que redujeron los tiempos de deployment de horas a minutos. Mi enfoque une buenas prácticas de desarrollo con una visión de infraestructura como código y cultura DevOps.',
-    aboutText3: 'Mi visión es construir sistemas que no solo funcionen, sino que evolucionen. Busco constantemente nuevas formas de hacer que los equipos trabajen más rápido, más seguros y con mayor confianza en cada release.',
+    aboutText1: 'Comencé mi carrera en desarrollo web en 2017, y rápidamente descubrí mi pasión por entender cómo funcionan las cosas desde adentro: la infraestructura, la automatización y la arquitectura que sostiene el software. Esta intersección entre desarrollo y operaciones se convirtió en mi especialidad.',
+    aboutText2: 'He liderado procesos de transformación DevOps en startups y equipos corporativos, implementando pipelines CI/CD que redujeron los tiempos de deployment de horas a minutos. Mi enfoque combina buenas prácticas de desarrollo con infraestructura como código y una fuerte cultura de automatización.',
+    aboutText3: 'Mi visión es construir sistemas que no solo funcionen, sino que evolucionen. Busco constantemente nuevas formas de hacer que los equipos trabajen más rápido, con mayor seguridad y confianza en cada release.',
     philosophy: 'Filosofía',
-    philosophyText: 'Me apasiona conectar piezas: lenguajes, frameworks y servicios en la nube se integran para crear sistemas como redes, donde cada nodo aporta su valor. La estrategia más adecuada se elige según el contexto, y si el problema se puede mapear, se puede resolver. El objetivo es que esas soluciones sean replicables, escalables y elegantes, sumando siempre al equipo.',
+    philosophyText: 'Me apasiona conectar piezas. Lenguajes, frameworks y servicios en la nube se integran para formar sistemas como redes, donde cada nodo aporta su valor. La estrategia más adecuada se define según el contexto, y si un problema puede mapearse, puede resolverse. Mi objetivo es que cada solución sea replicable, escalable y elegante, sumando siempre al equipo y facilitando su crecimiento.',
+    philosophyQuote: 'Creo que el verdadero valor de un desarrollador no está solo en escribir código, sino en saber cómo conectar piezas con propósito a partir del trabajo en equipo.',
     contact: 'Contacto',
     contactDescription: '¿Tenés un proyecto en mente o querés charlar sobre tecnología? Estoy siempre abierto a nuevas oportunidades y colaboraciones.',
     form: {
@@ -64,11 +65,12 @@ const translations = {
     projects: 'Featured Projects',
     about: 'About',
     aboutTitle: 'About Me',
-    aboutText1: 'I started my web development career in 2017, and quickly discovered my passion for understanding how things work under the hood: infrastructure, automation, and the architecture behind software. This intersection between development and operations became my specialty.',
-    aboutText2: 'I\'ve led DevOps transformations in startups and corporate teams, implementing CI/CD pipelines that reduced deployment times from hours to minutes. My approach combines development best practices with infrastructure-as-code and DevOps culture.',
-    aboutText3: 'My vision is to build systems that not only work, but evolve. I constantly seek new ways to make teams work faster, safer, and with greater confidence in every release.',
+    aboutText1: 'I started my web development career in 2017, and quickly discovered my passion for understanding how things work under the hood: infrastructure, automation, and the architecture that sustains software. This intersection between development and operations became my specialty.',
+    aboutText2: 'I\'ve led DevOps transformation processes in startups and corporate teams, implementing CI/CD pipelines that reduced deployment times from hours to minutes. My approach combines development best practices with infrastructure-as-code and a strong automation culture.',
+    aboutText3: 'My vision is to build systems that not only work, but evolve. I constantly seek new ways to make teams work faster, with greater security and confidence in every release.',
     philosophy: 'Philosophy',
-    philosophyText: 'I\'m passionate about connecting pieces: languages, frameworks, and cloud services integrate to create systems like networks, where each node brings its value. The most appropriate strategy is chosen based on context, and if a problem can be mapped, it can be solved. The goal is for those solutions to be replicable, scalable, and elegant, always adding to the team.',
+    philosophyText: 'I\'m passionate about connecting pieces. Languages, frameworks, and cloud services integrate to form systems like networks, where each node brings its value. The most appropriate strategy is defined based on context, and if a problem can be mapped, it can be solved. My goal is for each solution to be replicable, scalable, and elegant, always contributing to the team and facilitating its growth.',
+    philosophyQuote: 'I believe that the true value of a developer lies not only in writing code, but in knowing how to connect pieces with purpose through teamwork.',
     contact: 'Contact',
     contactDescription: 'Do you have a project in mind or want to chat about technology? I\'m always open to new opportunities and collaborations.',
     form: {
@@ -438,9 +440,14 @@ function App() {
             </p>
             
             <h3 className={`text-2xl font-bold mt-12 mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{t.philosophy}</h3>
-            <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
+            <p className={`text-lg leading-relaxed mb-8 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
               {t.philosophyText}
             </p>
+            <div className={`pl-6 border-l-4 ${darkMode ? 'border-orange-500 bg-gray-800' : 'border-orange-500 bg-gray-100'} p-6 rounded`}>
+              <p className={`text-base italic leading-relaxed ${darkMode ? 'text-gray-100' : 'text-gray-800'}`}>
+                💡 {t.philosophyQuote}
+              </p>
+            </div>
           </div>
         </div>
       </section>
