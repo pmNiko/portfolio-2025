@@ -17,7 +17,7 @@ const translations = {
     },
     hero: {
       name: 'Martín Nicolás Paneblanco',
-      title: 'Arquitecto de Software · Full Stack & DevOps Engineer',
+      title: 'Desarrollador de software',
       description: 'Diseñando soluciones escalables y automatizando flujos complejos para potenciar equipos de desarrollo. Enfocado en performance, calidad y despliegues sin fricción.',
       contactBtn: 'Contactar',
       projectsBtn: 'Ver proyectos',
@@ -46,7 +46,7 @@ const translations = {
       error: 'Error al enviar el mensaje. Intenta de nuevo.',
       required: 'requerido',
     },
-    footer: '© 2025 Martín Nicolás Paneblanco. Todos los derechos reservados.',
+  footer: '© 2025 Martín Nicolás Paneblanco',
   },
   en: {
     nav: {
@@ -57,7 +57,7 @@ const translations = {
     },
     hero: {
       name: 'Martín Nicolás Paneblanco',
-      title: 'Software Architect · Full Stack & DevOps Engineer',
+  title: 'Software Developer',
       description: 'Designing scalable solutions and automating complex workflows to empower development teams. Focused on performance, quality, and frictionless deployments.',
       contactBtn: 'Contact',
       projectsBtn: 'View projects',
@@ -86,7 +86,7 @@ const translations = {
       error: 'Error sending message. Try again.',
       required: 'required',
     },
-    footer: '© 2025 Martín Nicolás Paneblanco. All rights reserved.',
+  footer: '© 2025 Martín Nicolás Paneblanco',
   }
 };
 
