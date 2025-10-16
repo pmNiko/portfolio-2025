@@ -21,6 +21,7 @@ const translations = {
       description: 'Diseñando soluciones escalables y automatizando flujos complejos para potenciar equipos de desarrollo. Enfocado en performance, calidad y despliegues sin fricción.',
       contactBtn: 'Contactar',
       projectsBtn: 'Ver proyectos',
+      cvBtn: 'Ver CV actualizado',
     },
     skills: 'Habilidades',
     badges: 'Medallas',
@@ -60,6 +61,7 @@ const translations = {
       description: 'Designing scalable solutions and automating complex workflows to empower development teams. Focused on performance, quality, and frictionless deployments.',
       contactBtn: 'Contact',
       projectsBtn: 'View projects',
+      cvBtn: 'View updated CV',
     },
     skills: 'Skills',
     badges: 'Badges',
@@ -272,10 +274,10 @@ function App() {
                 href="https://cv-portfolio-nk.netlify.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border-2 border-orange-700 text-orange-700 px-6 py-3 rounded-lg hover:bg-orange-700 hover:text-white transition-all hover:scale-105 font-semibold group"
-                aria-label="Ver CV actualizado"
+                className={`inline-flex items-center gap-2 border-2 px-6 py-3 rounded-lg font-semibold group transition-all hover:scale-105 ${darkMode ? 'border-gray-600 text-gray-300 hover:border-orange-700 hover:bg-orange-700 hover:text-white' : 'border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white'}`}
+                aria-label={t.hero.cvBtn}
               >
-                Ver CV actualizado
+                {t.hero.cvBtn}
                 <Download size={18} aria-hidden="true" className="group-hover:text-white transition-colors" />
               </a>
               <a href="#projects" className={`inline-flex items-center gap-2 border-2 px-6 py-3 rounded-lg hover:scale-105 transition-all font-semibold group ${
