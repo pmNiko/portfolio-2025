@@ -80,8 +80,9 @@ function App() {
                   ? 'text-white hover:text-orange-400'
                   : 'text-gray-900 hover:text-orange-600'
               }`}
+              aria-label="Ir al inicio"
             >
-              <Code2 size={28} className="text-orange-600" />
+              <Code2 size={28} className="text-orange-600" aria-hidden="true" />
               Niko.dev
             </button>
 
@@ -111,14 +112,18 @@ function App() {
                     : 'hover:bg-gray-100'
                 }`}
                 title={darkMode ? 'Light mode' : 'Dark mode'}
+                aria-label={darkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+                aria-pressed={darkMode}
               >
-                {darkMode ? <Sun size={24} className="text-orange-400" /> : <Moon size={24} className="text-gray-600" />}
+                {darkMode ? <Sun size={24} className="text-orange-400" aria-hidden="true" /> : <Moon size={24} className="text-gray-600" aria-hidden="true" />}
               </button>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className={`md:hidden ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
+                aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+                aria-expanded={mobileMenuOpen}
               >
-                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                {mobileMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
               </button>
             </div>
           </div>
@@ -150,24 +155,24 @@ function App() {
             <h1 className={`text-5xl md:text-7xl font-bold mb-6 leading-tight ${darkMode ? 'text-white' : ''}`}>
               Martín Nicolás Paneblanco
             </h1>
-            <h2 className={`text-2xl md:text-3xl mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+            <h2 className={`text-2xl md:text-3xl mb-6 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
               Arquitecto de Software · Full Stack & DevOps Engineer
             </h2>
-            <p className={`text-lg md:text-xl leading-relaxed ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+            <p className={`text-lg md:text-xl leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               Diseñando soluciones escalables y automatizando flujos complejos para potenciar equipos de desarrollo. Enfocado en performance, calidad y despliegues sin fricción.
             </p>
             <div className="flex gap-4 mt-8">
-              <a href="#contact" className="inline-flex items-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-all hover:scale-105 font-semibold">
+              <a href="#contact" className="inline-flex items-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-all hover:scale-105 font-semibold" aria-label="Ir a la sección de contacto">
                 Contactar
-                <Mail size={18} />
+                <Mail size={18} aria-hidden="true" />
               </a>
               <a href="#projects" className={`inline-flex items-center gap-2 border-2 px-6 py-3 rounded-lg hover:scale-105 transition-all font-semibold group ${
                 darkMode
                   ? 'border-gray-600 text-gray-300 hover:border-orange-600 hover:bg-orange-600 hover:text-white'
                   : 'border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'
-              }`}>
+              }`} aria-label="Ver proyectos destacados">
                 Ver proyectos
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -216,7 +221,7 @@ function App() {
                 }`}
               >
                 <h3 className={`text-2xl font-bold mb-3 ${darkMode ? 'text-white' : ''}`}>{project.title}</h3>
-                <p className={`mb-4 leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                <p className={`mb-4 leading-relaxed ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
@@ -236,16 +241,18 @@ function App() {
                 <div className="flex gap-4">
                   <a
                     href={project.github}
-                    className="inline-flex items-center gap-2 text-gray-600 hover:text-orange-600 transition-colors"
+                    className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
+                    aria-label={`Ver código del proyecto ${project.title}`}
                   >
-                    <Github size={18} />
+                    <Github size={18} aria-hidden="true" />
                     Código
                   </a>
                   <a
                     href={project.demo}
-                    className="inline-flex items-center gap-2 text-gray-600 hover:text-orange-600 transition-colors"
+                    className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
+                    aria-label={`Ver demo del proyecto ${project.title}`}
                   >
-                    <ExternalLink size={18} />
+                    <ExternalLink size={18} aria-hidden="true" />
                     Demo
                   </a>
                 </div>
@@ -260,24 +267,24 @@ function App() {
         <div className="max-w-6xl mx-auto">
           <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>Sobre mí</h2>
           <div className="max-w-3xl">
-            <p className={`text-lg leading-relaxed mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+            <p className={`text-lg leading-relaxed mb-6 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
               Comencé mi carrera en desarrollo web en 2017, y rápidamente descubrí mi pasión por entender 
               cómo funcionan las cosas desde adentro: la infraestructura, la automatización y la arquitectura 
               detrás del software. Esta intersección entre desarrollo y operaciones se convirtió en mi especialidad.
             </p>
-            <p className={`text-lg leading-relaxed mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+            <p className={`text-lg leading-relaxed mb-6 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
               He liderado la transformación DevOps en startups y equipos corporativos, implementando
               pipelines CI/CD que redujeron los tiempos de deployment de horas a minutos. Mi enfoque
               une buenas prácticas de desarrollo con una visión de infraestructura como código y cultura DevOps.
             </p>
-            <p className={`text-lg leading-relaxed mb-6 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+            <p className={`text-lg leading-relaxed mb-6 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
               Mi visión es construir sistemas que no solo funcionen, sino que evolucionen. Busco
               constantemente nuevas formas de hacer que los equipos trabajen más rápido, más seguros
               y con mayor confianza en cada release.
             </p>
             
             <h3 className={`text-2xl font-bold mt-12 mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Filosofía</h3>
-            <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+            <p className={`text-lg leading-relaxed ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
               Me apasiona conectar piezas: lenguajes, frameworks y servicios en la nube se integran 
               para crear sistemas como redes, donde cada nodo aporta su valor. La estrategia más adecuada 
               se elige según el contexto, y si el problema se puede mapear, se puede resolver. El objetivo 
@@ -292,7 +299,7 @@ function App() {
         <div className="max-w-6xl mx-auto">
           <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>Contacto</h2>
           <div className="max-w-2xl">
-            <p className={`text-lg mb-8 ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+            <p className={`text-lg mb-8 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
               ¿Tenés un proyecto en mente o querés charlar sobre tecnología?
               Estoy siempre abierto a nuevas oportunidades y colaboraciones.
             </p>
@@ -302,11 +309,12 @@ function App() {
                 href="mailto:niko.dev.contact@gmail.com"
                 className={`inline-flex items-center gap-3 text-lg transition-colors group ${
                   darkMode
-                    ? 'text-gray-300 hover:text-orange-400'
+                    ? 'text-gray-200 hover:text-orange-400'
                     : 'text-gray-900 hover:text-orange-600'
                 }`}
+                aria-label="Enviar email a niko.dev.contact@gmail.com"
               >
-                <Mail className="text-orange-600" size={24} />
+                <Mail className="text-orange-600" size={24} aria-hidden="true" />
                 <span>niko.dev.contact@gmail.com</span>
               </a>
               <a
@@ -315,11 +323,12 @@ function App() {
                 rel="noopener noreferrer"
                 className={`inline-flex items-center gap-3 text-lg transition-colors group ${
                   darkMode
-                    ? 'text-gray-300 hover:text-orange-400'
+                    ? 'text-gray-200 hover:text-orange-400'
                     : 'text-gray-900 hover:text-orange-600'
                 }`}
+                aria-label="Visitar perfil de GitHub - pmNiko (abre en nueva ventana)"
               >
-                <Github className="text-orange-600" size={24} />
+                <Github className="text-orange-600" size={24} aria-hidden="true" />
                 <span>github.com/pmNiko</span>
               </a>
               <a
@@ -328,11 +337,12 @@ function App() {
                 rel="noopener noreferrer"
                 className={`inline-flex items-center gap-3 text-lg transition-colors group ${
                   darkMode
-                    ? 'text-gray-300 hover:text-orange-400'
+                    ? 'text-gray-200 hover:text-orange-400'
                     : 'text-gray-900 hover:text-orange-600'
                 }`}
+                aria-label="Visitar perfil de LinkedIn - Nicolás Paneblanco (abre en nueva ventana)"
               >
-                <Linkedin className="text-orange-600" size={24} />
+                <Linkedin className="text-orange-600" size={24} aria-hidden="true" />
                 <span>linkedin.com/in/nicolás-paneblanco-527108190</span>
               </a>
             </div>
@@ -370,16 +380,19 @@ function App() {
                 }
               }}
               className="space-y-6"
+              noValidate
+              aria-label="Formulario de contacto"
             >
               <div>
                 <label htmlFor="name" className={`block text-sm font-medium mb-2 ${darkMode ? 'text-white' : ''}`}>
-                  Nombre
+                  Nombre <span aria-label="requerido" className="text-orange-600">*</span>
                 </label>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   required
+                  aria-required="true"
                   className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-orange-600 focus:ring-1 focus:ring-orange-600 transition-colors ${
                     darkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
@@ -390,13 +403,14 @@ function App() {
               </div>
               <div>
                 <label htmlFor="email" className={`block text-sm font-medium mb-2 ${darkMode ? 'text-white' : ''}`}>
-                  Email
+                  Email <span aria-label="requerido" className="text-orange-600">*</span>
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   required
+                  aria-required="true"
                   className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-orange-600 focus:ring-1 focus:ring-orange-600 transition-colors ${
                     darkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
@@ -407,12 +421,13 @@ function App() {
               </div>
               <div>
                 <label htmlFor="message" className={`block text-sm font-medium mb-2 ${darkMode ? 'text-white' : ''}`}>
-                  Mensaje
+                  Mensaje <span aria-label="requerido" className="text-orange-600">*</span>
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   required
+                  aria-required="true"
                   rows={5}
                   className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-orange-600 focus:ring-1 focus:ring-orange-600 transition-colors resize-none ${
                     darkMode
