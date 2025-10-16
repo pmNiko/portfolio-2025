@@ -293,7 +293,7 @@ function App() {
 
             <div className="flex flex-col gap-4 mb-12">
               <a
-                href="mailto:martin.gonzalez@example.com"
+                href="mailto:niko.dev.contact@gmail.com"
                 className={`inline-flex items-center gap-3 text-lg transition-colors group ${
                   darkMode
                     ? 'text-gray-300 hover:text-orange-400'
@@ -301,10 +301,10 @@ function App() {
                 }`}
               >
                 <Mail className="text-orange-600" size={24} />
-                <span>martin.gonzalez@example.com</span>
+                <span>niko.dev.contact@gmail.com</span>
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/pmNiko"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`inline-flex items-center gap-3 text-lg transition-colors group ${
@@ -314,16 +314,20 @@ function App() {
                 }`}
               >
                 <Github className="text-orange-600" size={24} />
-                <span>github.com/martingonzalez</span>
+                <span>github.com/pmNiko</span>
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/nicolás-paneblanco-527108190"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 text-lg hover:text-orange-600 transition-colors group"
+                className={`inline-flex items-center gap-3 text-lg transition-colors group ${
+                  darkMode
+                    ? 'text-gray-300 hover:text-orange-400'
+                    : 'text-gray-900 hover:text-orange-600'
+                }`}
               >
                 <Linkedin className="text-orange-600" size={24} />
-                <span>linkedin.com/in/martingonzalez</span>
+                <span>linkedin.com/in/nicolás-paneblanco-527108190</span>
               </a>
             </div>
 
