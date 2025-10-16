@@ -323,7 +323,7 @@ function App() {
               { name: 'Node.js', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
               { name: 'TypeScript', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
               { name: 'SOLID', url: 'https://res.cloudinary.com/dl1k2dee0/image/upload/v1701878258/courses/solid/badge/solid.svg' },
-              { name: 'Testing', url: '/icons/jest-js-icon.png' },
+              { name: 'Testing', url: './icons/jest-js-icon.png' },
               { name: 'Express', url: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg' },
               { name: 'React', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
               { name: 'Next.js', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
@@ -332,7 +332,7 @@ function App() {
               { name: 'PostgreSQL', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
               { name: 'Docker', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
               { name: 'Python', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-              { name: 'AI', url: 'https://cdn-icons-png.flaticon.com/512/11592/11592357.png' },
+              { name: 'AI', url: './icons/ia-badge.png' },
               { name: 'n8n', svg: true },
             ].map((badge, index) => (
               <div
