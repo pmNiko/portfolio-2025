@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { Github, Linkedin, Mail, ExternalLink, Code2, Server, Database, Container, Cloud, Menu, X, ArrowRight, Sun, Moon, GitBranch, Smartphone, ContainerIcon, Code, User2 } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Code2, Server, Database, Cloud, Menu, X, ArrowRight, Sun, Moon, Smartphone, Zap, Code, User2, CreditCard } from 'lucide-react';
 
 // Inicializar EmailJS
 emailjs.init('tjTCVED0LjhPAnVZs');
@@ -104,13 +104,13 @@ function App() {
     { name: 'Frontend', icon: Code2 },
     { name: 'Backend', icon: Server },
     { name: 'Base de datos', icon: Database },
-    { name: 'AWS Azure Google', icon: Cloud },
-    { name: 'Expo Android iOS', icon: Smartphone },
-    { name: 'Pipelines', icon: GitBranch },
-    { name: 'Firebase Supabase', icon: ContainerIcon },
+    { name: 'AWS / Azure / Google', icon: Cloud },
+    { name: 'Expo Android / iOS', icon: Smartphone },
+    { name: 'Pipelines', icon: Github },
+    { name: 'Firebase / Supabase', icon: Zap },
     { name: 'Sysadmin', icon: Code },
-    { name: 'Oauth', icon: User2 },
-    { name: 'Mercado Pago', icon: User2 },
+    { name: 'OAuth', icon: User2 },
+    { name: 'Mercado Pago / Stripe', icon: CreditCard },
     
   ];
 
