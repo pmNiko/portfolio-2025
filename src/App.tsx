@@ -161,10 +161,10 @@ function App() {
                 Contactar
                 <Mail size={18} />
               </a>
-              <a href="#projects" className={`inline-flex items-center gap-2 border-2 border-orange-600 px-6 py-3 rounded-lg hover:scale-105 transition-all font-semibold group ${
+              <a href="#projects" className={`inline-flex items-center gap-2 border-2 px-6 py-3 rounded-lg hover:scale-105 transition-all font-semibold group ${
                 darkMode
-                  ? 'text-orange-400 hover:bg-orange-600 hover:text-white'
-                  : 'text-orange-600 hover:bg-orange-600 hover:text-white'
+                  ? 'border-gray-600 text-gray-300 hover:border-orange-600 hover:bg-orange-600 hover:text-white'
+                  : 'border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'
               }`}>
                 Ver proyectos
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
