@@ -362,7 +362,7 @@ function App() {
               className="space-y-6"
             >
               <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
+                <label htmlFor="name" className={`block text-sm font-medium mb-2 ${darkMode ? 'text-white' : ''}`}>
                   Nombre
                 </label>
                 <input
@@ -370,12 +370,16 @@ function App() {
                   id="name"
                   name="name"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-600 focus:ring-1 focus:ring-orange-600 transition-colors"
+                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-orange-600 focus:ring-1 focus:ring-orange-600 transition-colors ${
+                    darkMode
+                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
+                      : 'border-gray-300 text-gray-900 placeholder-gray-500'
+                  }`}
                   placeholder="Tu nombre"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
+                <label htmlFor="email" className={`block text-sm font-medium mb-2 ${darkMode ? 'text-white' : ''}`}>
                   Email
                 </label>
                 <input
@@ -383,12 +387,16 @@ function App() {
                   id="email"
                   name="email"
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-600 focus:ring-1 focus:ring-orange-600 transition-colors"
+                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-orange-600 focus:ring-1 focus:ring-orange-600 transition-colors ${
+                    darkMode
+                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
+                      : 'border-gray-300 text-gray-900 placeholder-gray-500'
+                  }`}
                   placeholder="tu@email.com"
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
+                <label htmlFor="message" className={`block text-sm font-medium mb-2 ${darkMode ? 'text-white' : ''}`}>
                   Mensaje
                 </label>
                 <textarea
@@ -396,17 +404,29 @@ function App() {
                   name="message"
                   required
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-600 focus:ring-1 focus:ring-orange-600 transition-colors resize-none"
+                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-orange-600 focus:ring-1 focus:ring-orange-600 transition-colors resize-none ${
+                    darkMode
+                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
+                      : 'border-gray-300 text-gray-900 placeholder-gray-500'
+                  }`}
                   placeholder="Contame sobre tu proyecto..."
                 />
               </div>
               {formStatus === 'success' && (
-                <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-700">
+                <div className={`p-4 border rounded-lg ${
+                  darkMode
+                    ? 'bg-green-900/30 border-green-700 text-green-400'
+                    : 'bg-green-50 border-green-200 text-green-700'
+                }`}>
                   {formMessage}
                 </div>
               )}
               {formStatus === 'error' && (
-                <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+                <div className={`p-4 border rounded-lg ${
+                  darkMode
+                    ? 'bg-red-900/30 border-red-700 text-red-400'
+                    : 'bg-red-50 border-red-200 text-red-700'
+                }`}>
                   {formMessage}
                 </div>
               )}
@@ -423,8 +443,12 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 border-t border-gray-200 bg-white">
-        <div className="max-w-6xl mx-auto text-center text-gray-600">
+      <footer className={`py-8 px-6 border-t transition-colors duration-300 ${
+        darkMode
+          ? 'border-gray-700 bg-gray-800'
+          : 'border-gray-200 bg-white'
+      }`}>
+        <div className={`max-w-6xl mx-auto text-center ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
           <p>© 2025 Martín Nicolás Paneblanco. Todos los derechos reservados.</p>
         </div>
       </footer>
