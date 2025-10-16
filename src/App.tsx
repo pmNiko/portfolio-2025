@@ -25,6 +25,7 @@ const translations = {
     },
     skills: 'Habilidades',
     badges: 'Medallas',
+    mapappDesc: 'Aplicación de mapas interactiva desarrollada en React y TypeScript que permite buscar ubicaciones, generar rutas y visualizar caminos en San Martín de los Andes con integración de Mapbox.',
     projects: 'Proyectos destacados',
     about: 'Sobre mí',
     aboutTitle: 'Sobre mí',
@@ -36,7 +37,7 @@ const translations = {
     philosophyQuote: 'Creo que el verdadero valor de un desarrollador no está solo en escribir código, sino en saber cómo conectar piezas con propósito a partir del trabajo en equipo.',
     contact: 'Contacto',
     contactDescription: '¿Tenés un proyecto en mente o querés charlar sobre tecnología? Estoy siempre abierto a nuevas oportunidades y colaboraciones.',
-    form: {
+  form: {
       name: 'Nombre',
       email: 'Email',
       message: 'Mensaje',
@@ -47,6 +48,8 @@ const translations = {
       required: 'requerido',
     },
   footer: '© 2025 Martín Nicolás Paneblanco',
+  commitBy: 'Implementación:',
+  committedOn: 'commit el',
   },
   en: {
     nav: {
@@ -65,6 +68,7 @@ const translations = {
     },
     skills: 'Skills',
     badges: 'Badges',
+    mapappDesc: 'Interactive map application built with React and TypeScript. Search locations, generate routes, and visualize paths in San Martín de los Andes with Mapbox integration.',
     projects: 'Featured Projects',
     about: 'About',
     aboutTitle: 'About Me',
@@ -87,6 +91,8 @@ const translations = {
       required: 'required',
     },
   footer: '© 2025 Martín Nicolás Paneblanco',
+  commitBy: 'By:',
+  committedOn: 'committed on',
   }
 };
 
@@ -122,11 +128,12 @@ function App() {
 
   const projects = [
     {
-      title: 'Cloud Infrastructure Automation',
-      description: 'Sistema automatizado de despliegue multi-cloud con Terraform y Ansible. Reducción del 70% en tiempo de provisioning.',
-      tech: ['Terraform', 'AWS', 'Docker', 'Jenkins'],
-      github: '#',
-      demo: '#'
+      title: 'MapApp — Explorador de rutas',
+      descriptionKey: 'mapappDesc',
+      tech: ['React', 'TypeScript', 'Mapbox API'],
+      github: 'https://github.com/pmNiko/MapApp',
+      demo: 'https://maps-app-niko.netlify.app',
+      icon: `${import.meta.env.BASE_URL}icons/maps.png`,
     },
     {
       title: 'Microservices Platform',
@@ -403,42 +410,106 @@ function App() {
                     : 'bg-white border-gray-200 hover:border-orange-600 hover:shadow-lg'
                 }`}
               >
-                <h3 className={`text-2xl font-bold mb-3 ${darkMode ? 'text-white' : ''}`}>{project.title}</h3>
-                <p className={`mb-4 leading-relaxed ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className={`text-sm px-3 py-1 rounded-full ${
-                        darkMode
-                          ? 'bg-gray-700 text-gray-200'
-                          : 'bg-gray-100 text-gray-700'
-                      }`}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-4">
-                  <a
-                    href={project.github}
-                    className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
-                    aria-label={`Ver código del proyecto ${project.title}`}
-                  >
-                    <Github size={18} aria-hidden="true" />
-                    Código
-                  </a>
-                  <a
-                    href={project.demo}
-                    className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
-                    aria-label={`Ver demo del proyecto ${project.title}`}
-                  >
-                    <ExternalLink size={18} aria-hidden="true" />
-                    Demo
-                  </a>
-                </div>
+                {/* Custom layout for the first card */}
+                {index === 0 ? (
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center gap-3 mb-3">
+                      <img 
+                        src={project.icon} 
+                        alt="Ícono de MapApp" 
+                        className="w-12 h-12 object-cover bg-gray-100 rounded shadow-sm" 
+                        loading="lazy" 
+                        onError={e => { e.currentTarget.style.display = 'none'; }}
+                      />
+                      <h3 className={`text-2xl font-bold ${darkMode ? 'text-white' : ''}`}>{project.title}</h3>
+                    </div>
+                    <p className={`mb-4 leading-relaxed ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
+                      {project.descriptionKey && typeof t[project.descriptionKey as keyof typeof t] === 'string'
+                        ? t[project.descriptionKey as keyof typeof t] as string
+                        : project.description || ''}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.tech.map((tech, i) => (
+                        <span
+                          key={i}
+                          className={`text-sm px-3 py-1 rounded-full ${
+                            darkMode
+                              ? 'bg-gray-700 text-gray-200'
+                              : 'bg-gray-100 text-gray-700'
+                          }`}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex gap-4">
+                      <a
+                        href={project.github}
+                        className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
+                        aria-label={`Ver código del proyecto ${project.title}`}
+                        target="_blank" rel="noopener noreferrer"
+                      >
+                        <Github size={18} aria-hidden="true" />
+                        Código
+                      </a>
+                      <a
+                        href={project.demo}
+                        className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
+                        aria-label={`Ver demo del proyecto ${project.title}`}
+                        target="_blank" rel="noopener noreferrer"
+                      >
+                        <ExternalLink size={18} aria-hidden="true" />
+                        Demo
+                      </a>
+                    </div>
+                    <div className="flex">
+                      <small className={`flex items-center gap-1 mt-4 text-xs ml-auto ${darkMode ? 'text-gray-500' : 'text-gray-400'}`} style={{fontFamily:'monospace'}}>
+                        <Github size={14} className="inline-block mr-1" aria-hidden="true" />
+                        {t.commitBy}
+                        <span className="mx-1">pmNiko</span>
+                        <span className="mx-1">·</span>
+                        {t.committedOn} Jan 28, 2023
+                      </small>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <h3 className={`text-2xl font-bold mb-3 ${darkMode ? 'text-white' : ''}`}>{project.title}</h3>
+                    <p className={`mb-4 leading-relaxed ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>{project.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.tech.map((tech, i) => (
+                        <span
+                          key={i}
+                          className={`text-sm px-3 py-1 rounded-full ${
+                            darkMode
+                              ? 'bg-gray-700 text-gray-200'
+                              : 'bg-gray-100 text-gray-700'
+                          }`}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex gap-4">
+                      <a
+                        href={project.github}
+                        className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
+                        aria-label={`Ver código del proyecto ${project.title}`}
+                      >
+                        <Github size={18} aria-hidden="true" />
+                        Código
+                      </a>
+                      <a
+                        href={project.demo}
+                        className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
+                        aria-label={`Ver demo del proyecto ${project.title}`}
+                      >
+                        <ExternalLink size={18} aria-hidden="true" />
+                        Demo
+                      </a>
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>
