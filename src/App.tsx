@@ -159,11 +159,11 @@ function App() {
   ];
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${
-      darkMode 
-        ? 'bg-gray-900 text-white' 
-        : 'bg-gray-50 text-gray-900'
-    }`}>
+    <div
+  className={`min-h-screen w-screen overflow-x-hidden transition-colors duration-300 ${
+    darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'
+  }`}
+>
       {/* Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
         darkMode
@@ -239,23 +239,52 @@ function App() {
             </div>
           </div>
 
-          {/* Mobile Menu */}
+         {/* Mobile Menu */}
           {mobileMenuOpen && (
             <div className="md:hidden mt-4 pb-4 flex flex-col gap-4">
-              <button onClick={() => scrollToSection('skills')} className="text-gray-600 hover:text-orange-600 transition-colors text-left">
+              <button
+                onClick={() => scrollToSection('skills')}
+                className={`transition-colors text-left ${
+                  darkMode
+                    ? 'text-gray-300 hover:text-orange-400'
+                    : 'text-gray-600 hover:text-orange-600'
+                }`}
+              >
                 {t.nav.skills}
               </button>
-              <button onClick={() => scrollToSection('projects')} className="text-gray-600 hover:text-orange-600 transition-colors text-left">
+              <button
+                onClick={() => scrollToSection('projects')}
+                className={`transition-colors text-left ${
+                  darkMode
+                    ? 'text-gray-300 hover:text-orange-400'
+                    : 'text-gray-600 hover:text-orange-600'
+                }`}
+              >
                 {t.nav.projects}
               </button>
-              <button onClick={() => scrollToSection('about')} className="text-gray-600 hover:text-orange-600 transition-colors text-left">
+              <button
+                onClick={() => scrollToSection('about')}
+                className={`transition-colors text-left ${
+                  darkMode
+                    ? 'text-gray-300 hover:text-orange-400'
+                    : 'text-gray-600 hover:text-orange-600'
+                }`}
+              >
                 {t.nav.about}
               </button>
-              <button onClick={() => scrollToSection('contact')} className="text-gray-600 hover:text-orange-600 transition-colors text-left">
+              <button
+                onClick={() => scrollToSection('contact')}
+                className={`transition-colors text-left ${
+                  darkMode
+                    ? 'text-gray-300 hover:text-orange-400'
+                    : 'text-gray-600 hover:text-orange-600'
+                }`}
+              >
                 {t.nav.contact}
               </button>
             </div>
           )}
+
         </div>
       </nav>
 
@@ -272,30 +301,45 @@ function App() {
             <p className={`text-lg md:text-xl leading-relaxed ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               {t.hero.description}
             </p>
-            <div className="flex gap-4 mt-8">
-              <a href="#contact" className="inline-flex items-center gap-2 bg-orange-700 text-white px-6 py-3 rounded-lg hover:bg-orange-800 transition-all hover:scale-105 font-semibold" aria-label="Ir a la sección de contacto">
+            <div className="flex flex-wrap gap-4 mt-8 justify-center sm:justify-start">
+              <a
+                href="#contact"
+                className="flex-1 min-w-[150px] sm:flex-none inline-flex items-center justify-center gap-2 bg-orange-700 text-white px-6 py-3 rounded-lg hover:bg-orange-800 transition-all hover:scale-105 font-semibold"
+                aria-label="Ir a la sección de contacto"
+              >
                 {t.hero.contactBtn}
                 <Mail size={18} aria-hidden="true" />
               </a>
+
               <a
                 href="https://cv-portfolio-nk.netlify.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center gap-2 border-2 px-6 py-3 rounded-lg font-semibold group transition-all hover:scale-105 ${darkMode ? 'border-gray-600 text-gray-300 hover:border-orange-700 hover:bg-orange-700 hover:text-white' : 'border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white'}`}
+                className={`flex-1 min-w-[150px] sm:flex-none inline-flex items-center justify-center gap-2 border-2 px-6 py-3 rounded-lg font-semibold group transition-all hover:scale-105 ${
+                  darkMode
+                    ? 'border-gray-600 text-gray-300 hover:border-orange-700 hover:bg-orange-700 hover:text-white'
+                    : 'border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white'
+                }`}
                 aria-label={t.hero.cvBtn}
               >
                 {t.hero.cvBtn}
                 <Download size={18} aria-hidden="true" className="group-hover:text-white transition-colors" />
               </a>
-              <a href="#projects" className={`inline-flex items-center gap-2 border-2 px-6 py-3 rounded-lg hover:scale-105 transition-all font-semibold group ${
-                darkMode
-                  ? 'border-gray-600 text-gray-300 hover:border-orange-700 hover:bg-orange-700 hover:text-white'
-                  : 'border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white'
-              }`} aria-label="Ver proyectos destacados">
+
+              <a
+                href="#projects"
+                className={`flex-1 min-w-[150px] sm:flex-none inline-flex items-center justify-center gap-2 border-2 px-6 py-3 rounded-lg hover:scale-105 transition-all font-semibold group ${
+                  darkMode
+                    ? 'border-gray-600 text-gray-300 hover:border-orange-700 hover:bg-orange-700 hover:text-white'
+                    : 'border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white'
+                }`}
+                aria-label="Ver proyectos destacados"
+              >
                 {t.hero.projectsBtn}
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </a>
             </div>
+
           </div>
         </div>
       </section>
