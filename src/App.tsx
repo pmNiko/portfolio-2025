@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { Github, Linkedin, Mail, ExternalLink, Code2, Server, Database, Cloud, Menu, X, ArrowRight, Sun, Moon, Smartphone, Zap, Code, User2, CreditCard, Network, Plug } from 'lucide-react';
+import { Download } from 'lucide-react';
 
 // Inicializar EmailJS
 emailjs.init('tjTCVED0LjhPAnVZs');
@@ -266,6 +267,16 @@ function App() {
               <a href="#contact" className="inline-flex items-center gap-2 bg-orange-700 text-white px-6 py-3 rounded-lg hover:bg-orange-800 transition-all hover:scale-105 font-semibold" aria-label="Ir a la sección de contacto">
                 {t.hero.contactBtn}
                 <Mail size={18} aria-hidden="true" />
+              </a>
+              <a
+                href="https://cv-portfolio-nk.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border-2 border-orange-700 text-orange-700 px-6 py-3 rounded-lg hover:bg-orange-700 hover:text-white transition-all hover:scale-105 font-semibold group"
+                aria-label="Ver CV actualizado"
+              >
+                Ver CV actualizado
+                <Download size={18} aria-hidden="true" className="group-hover:text-white transition-colors" />
               </a>
               <a href="#projects" className={`inline-flex items-center gap-2 border-2 px-6 py-3 rounded-lg hover:scale-105 transition-all font-semibold group ${
                 darkMode
