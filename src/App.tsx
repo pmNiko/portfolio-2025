@@ -263,14 +263,14 @@ function App() {
               {t.hero.description}
             </p>
             <div className="flex gap-4 mt-8">
-              <a href="#contact" className="inline-flex items-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-all hover:scale-105 font-semibold" aria-label="Ir a la sección de contacto">
+              <a href="#contact" className="inline-flex items-center gap-2 bg-orange-700 text-white px-6 py-3 rounded-lg hover:bg-orange-800 transition-all hover:scale-105 font-semibold" aria-label="Ir a la sección de contacto">
                 {t.hero.contactBtn}
                 <Mail size={18} aria-hidden="true" />
               </a>
               <a href="#projects" className={`inline-flex items-center gap-2 border-2 px-6 py-3 rounded-lg hover:scale-105 transition-all font-semibold group ${
                 darkMode
-                  ? 'border-gray-600 text-gray-300 hover:border-orange-600 hover:bg-orange-600 hover:text-white'
-                  : 'border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white'
+                  ? 'border-gray-600 text-gray-300 hover:border-orange-700 hover:bg-orange-700 hover:text-white'
+                  : 'border-orange-700 text-orange-700 hover:bg-orange-700 hover:text-white'
               }`} aria-label="Ver proyectos destacados">
                 {t.hero.projectsBtn}
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
@@ -623,7 +623,7 @@ function App() {
               <button
                 type="submit"
                 disabled={formStatus === 'loading'}
-                className="w-full bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700 transition-all hover:scale-105 font-medium disabled:opacity-50 disabled:hover:scale-100"
+                className="w-full bg-orange-700 text-white px-6 py-3 rounded-lg hover:bg-orange-800 transition-all hover:scale-105 font-medium disabled:opacity-50 disabled:hover:scale-100"
               >
                 {formStatus === 'loading' ? t.form.sending : t.form.send}
               </button>
