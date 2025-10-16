@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { Github, Linkedin, Mail, ExternalLink, Code2, Server, Database, Container, GitBranch, Cloud, Menu, X, ArrowRight, Sun, Moon } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Code2, Server, Database, Container, Cloud, Menu, X, ArrowRight, Sun, Moon, GitBranch, Smartphone, ContainerIcon, Code, User2 } from 'lucide-react';
 
 // Inicializar EmailJS
 emailjs.init('tjTCVED0LjhPAnVZs');
@@ -101,14 +101,17 @@ function App() {
   };
 
   const skills = [
-    { name: 'React', icon: Code2 },
-    { name: 'Node.js', icon: Server },
-    { name: 'PostgreSQL', icon: Database },
-    { name: 'Docker', icon: Container },
-    { name: 'GitHub Actions', icon: GitBranch },
-    { name: 'AWS', icon: Cloud },
-    { name: 'TypeScript', icon: Code2 },
-    { name: 'CI/CD', icon: GitBranch }
+    { name: 'Frontend', icon: Code2 },
+    { name: 'Backend', icon: Server },
+    { name: 'Base de datos', icon: Database },
+    { name: 'AWS Azure Google', icon: Cloud },
+    { name: 'Expo Android iOS', icon: Smartphone },
+    { name: 'Pipelines', icon: GitBranch },
+    { name: 'Firebase Supabase', icon: ContainerIcon },
+    { name: 'Sysadmin', icon: Code },
+    { name: 'Oauth', icon: User2 },
+    { name: 'Mercado Pago', icon: User2 },
+    
   ];
 
   const projects = [
