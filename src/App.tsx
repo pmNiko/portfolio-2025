@@ -128,7 +128,7 @@ function App() {
 
   const projects = [
     {
-      title: 'MapApp — Explorador de rutas',
+      title: 'MapApp',
       descriptionKey: 'mapappDesc',
       tech: ['React', 'TypeScript', 'Mapbox API'],
       github: 'https://github.com/pmNiko/MapApp',
