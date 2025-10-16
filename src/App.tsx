@@ -177,17 +177,23 @@ function App() {
       {/* Skills Section */}
       <section id="skills" className={`py-20 px-6 transition-colors duration-300 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12">Habilidades</h2>
+          <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>Habilidades</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {skills.map((skill, index) => {
               const Icon = skill.icon;
               return (
                 <div
                   key={index}
-                  className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:border-orange-600 hover:shadow-md transition-all group"
+                  className={`flex items-center gap-3 p-4 border rounded-lg transition-all group ${
+                    darkMode
+                      ? 'bg-gray-700 border-gray-600 hover:border-orange-600 hover:shadow-lg hover:shadow-orange-600/20'
+                      : 'border-gray-200 hover:border-orange-600 hover:shadow-md'
+                  }`}
                 >
-                  <Icon className="text-gray-600 group-hover:text-orange-600 transition-colors" size={24} />
-                  <span className="font-medium">{skill.name}</span>
+                  <Icon className={`group-hover:text-orange-600 transition-colors ${
+                    darkMode ? 'text-gray-400' : 'text-gray-600'
+                  }`} size={24} />
+                  <span className={`font-medium ${darkMode ? 'text-gray-100' : ''}`}>{skill.name}</span>
                 </div>
               );
             })}
