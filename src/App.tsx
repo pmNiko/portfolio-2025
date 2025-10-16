@@ -362,9 +362,9 @@ function App() {
                   title={skill.tooltip}
                 >
                   <Icon className={`group-hover:text-orange-600 transition-colors ${
-                    darkMode ? 'text-gray-400' : 'text-gray-600'
+                    darkMode ? 'text-gray-300' : 'text-gray-800'
                   }`} size={24} />
-                  <span className={`font-medium ${darkMode ? 'text-gray-100' : ''}`}>{skill.name}</span>
+                  <span className={`font-medium ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>{skill.name}</span>
                   {/* Tooltip */}
                   <div className={`absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 rounded text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none ${
                     darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-900 text-white'
@@ -507,10 +507,10 @@ function App() {
                       </a>
                     </div>
                     <div className="flex">
-                      <small className={`flex items-center gap-1 mt-4 text-xs ml-auto ${darkMode ? 'text-gray-500' : 'text-gray-400'}`} style={{fontFamily:'monospace'}}>
+                      <small className={`flex items-center gap-1 mt-4 text-xs ml-auto ${darkMode ? 'text-gray-400' : 'text-gray-800'}`} style={{fontFamily:'monospace'}}>
                         <Github size={14} className="inline-block mr-1" aria-hidden="true" />
                         {t.commitBy}
-                        <span className="mx-1">pmNiko</span>
+                        <span className="mx-1 bg-gray-100 text-gray-900 px-1 rounded">pmNiko</span>
                         <span className="mx-1">·</span>
                         {t.committedOn} Jan 28, 2023
                       </small>
@@ -766,7 +766,7 @@ function App() {
           ? 'border-gray-700 bg-gray-800'
           : 'border-gray-200 bg-white'
       }`}>
-        <div className={`max-w-6xl mx-auto text-center ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+  <div className={`max-w-6xl mx-auto text-center ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>
           <p>{t.footer}</p>
         </div>
       </footer>
