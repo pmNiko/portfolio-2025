@@ -26,7 +26,12 @@ const translations = {
     skills: 'Habilidades',
     badges: 'Medallas',
     mapappDesc: 'Aplicación de mapas interactiva desarrollada en React y TypeScript que permite buscar ubicaciones, generar rutas y visualizar caminos en San Martín de los Andes con integración de Mapbox.',
+    jsSimulatorDesc: 'Simulador visual e interactivo que muestra cómo funciona el Event Loop de JavaScript, incluyendo Call Stack, Web APIs, Microtask Queue y Callback Queue. Permite ejecutar código paso a paso o en modo automático, con log detallado y resumen final.',
     projects: 'Proyectos destacados',
+    codeBtn: 'Código',
+    demoBtn: 'Demo',
+    viewCode: 'Ver código del proyecto',
+    viewDemo: 'Ver demo del proyecto',
     about: 'Sobre mí',
     aboutTitle: 'Sobre mí',
     aboutText1: 'Comencé mi carrera en desarrollo web en 2017, y rápidamente descubrí mi pasión por entender cómo funcionan las cosas desde adentro: la infraestructura, la automatización y la arquitectura que sostiene el software. Esta intersección entre desarrollo y operaciones se convirtió en mi especialidad.',
@@ -69,7 +74,12 @@ const translations = {
     skills: 'Skills',
     badges: 'Badges',
     mapappDesc: 'Interactive map application built with React and TypeScript. Search locations, generate routes, and visualize paths in San Martín de los Andes with Mapbox integration.',
+    jsSimulatorDesc: 'Visual and interactive simulator that shows how the JavaScript Event Loop works, including Call Stack, Web APIs, Microtask Queue and Callback Queue. Allows step-by-step or automatic code execution, with detailed logging and final summary.',
     projects: 'Featured Projects',
+    codeBtn: 'Code',
+    demoBtn: 'Demo',
+    viewCode: 'View project code',
+    viewDemo: 'View project demo',
     about: 'About',
     aboutTitle: 'About Me',
     aboutText1: 'I started my web development career in 2017, and quickly discovered my passion for understanding how things work under the hood: infrastructure, automation, and the architecture that sustains software. This intersection between development and operations became my specialty.',
@@ -137,7 +147,7 @@ function App() {
     },
     {
       title: 'JS Event Loop Simulator',
-      description: 'Simulador visual e interactivo que muestra cómo funciona el Event Loop de JavaScript, incluyendo Call Stack, Web APIs, Microtask Queue y Callback Queue. Permite ejecutar código paso a paso o en modo automático, con log detallado y resumen final.',
+      descriptionKey: 'jsSimulatorDesc',
       tech: ['React', 'TypeScript', 'Zustand', 'Tailwind CSS'],
       github: 'https://github.com/pmNiko/JS-Event-Loop-Simulator',
       demo: 'https://pmniko.github.io/JS-Event-Loop-Simulator/',
@@ -445,11 +455,11 @@ function App() {
       <section id="projects" className={`py-20 px-6 transition-colors duration-300 ${darkMode ? 'bg-gray-900' : ''}`}>
         <div className="max-w-6xl mx-auto">
           <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>{t.projects}</h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 items-stretch">
             {projects.map((project, index) => (
               <div
                 key={index}
-                className={`p-8 rounded-lg border transition-all ${
+                className={`p-8 rounded-lg border transition-all flex flex-col ${
                   darkMode
                     ? 'bg-gray-800 border-gray-700 hover:border-orange-600 hover:shadow-lg hover:shadow-orange-600/20'
                     : 'bg-white border-gray-200 hover:border-orange-600 hover:shadow-lg'
@@ -457,8 +467,8 @@ function App() {
               >
                 {/* Custom layout for the first two cards */}
                 {index === 0 || index === 1 ? (
-                  <div className="flex flex-col gap-3">
-                    <div className="flex items-center gap-3 mb-3">
+                  <div className="flex flex-col h-full">
+                    <div className="flex items-center gap-3 mb-4">
                       <img 
                         src={project.icon} 
                         alt={`Ícono de ${project.title}`} 
@@ -468,12 +478,12 @@ function App() {
                       />
                       <h3 className={`text-2xl font-bold ${darkMode ? 'text-white' : ''}`}>{project.title}</h3>
                     </div>
-                    <p className={`mb-4 leading-relaxed ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
+                    <p className={`mb-4 leading-relaxed flex-grow ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                       {project.descriptionKey && typeof t[project.descriptionKey as keyof typeof t] === 'string'
                         ? t[project.descriptionKey as keyof typeof t] as string
                         : project.description || ''}
                     </p>
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {project.tech.map((tech, i) => (
                         <span
                           key={i}
@@ -487,33 +497,32 @@ function App() {
                         </span>
                       ))}
                     </div>
-                    <div className="flex gap-4">
-                      <a
-                        href={project.github}
-                        className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
-                        aria-label={`Ver código del proyecto ${project.title}`}
-                        target="_blank" rel="noopener noreferrer"
-                      >
-                        <Github size={18} aria-hidden="true" />
-                        Código
-                      </a>
-                      <a
-                        href={project.demo}
-                        className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
-                        aria-label={`Ver demo del proyecto ${project.title}`}
-                        target="_blank" rel="noopener noreferrer"
-                      >
-                        <ExternalLink size={18} aria-hidden="true" />
-                        Demo
-                      </a>
-                    </div>
-                    <div className="flex">
-                      <small className={`flex items-center gap-1 mt-4 text-xs ml-auto ${darkMode ? 'text-gray-400' : 'text-gray-800'}`} style={{fontFamily:'monospace'}}>
+                    <div className="flex justify-between items-center mt-auto pt-4">
+                      <div className="flex gap-4">
+                        <a
+                          href={project.github}
+                          className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
+                          aria-label={`${t.viewCode} ${project.title}`}
+                          target="_blank" rel="noopener noreferrer"
+                        >
+                          <Github size={18} aria-hidden="true" />
+                          {t.codeBtn}
+                        </a>
+                        <a
+                          href={project.demo}
+                          className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
+                          aria-label={`${t.viewDemo} ${project.title}`}
+                          target="_blank" rel="noopener noreferrer"
+                        >
+                          <ExternalLink size={18} aria-hidden="true" />
+                          {t.demoBtn}
+                        </a>
+                      </div>
+                      <small className={`flex items-center gap-1 text-xs ${darkMode ? 'text-gray-400' : 'text-gray-800'}`} style={{fontFamily:'monospace'}}>
                         <Github size={14} className="inline-block mr-1" aria-hidden="true" />
-                        {t.commitBy}
                         <span className="mx-1 bg-gray-100 text-gray-900 px-1 rounded">pmNiko</span>
                         <span className="mx-1">·</span>
-                        {index === 0 ? `${t.committedOn} Jan 28, 2023` : 'Implementación'}
+                        {index === 0 ? 'Jan 28, 2023' : 'Oct 19, 2025'}
                       </small>
                     </div>
                   </div>
@@ -539,18 +548,18 @@ function App() {
                       <a
                         href={project.github}
                         className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
-                        aria-label={`Ver código del proyecto ${project.title}`}
+                        aria-label={`${t.viewCode} ${project.title}`}
                       >
                         <Github size={18} aria-hidden="true" />
-                        Código
+                        {t.codeBtn}
                       </a>
                       <a
                         href={project.demo}
                         className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
-                        aria-label={`Ver demo del proyecto ${project.title}`}
+                        aria-label={`${t.viewDemo} ${project.title}`}
                       >
                         <ExternalLink size={18} aria-hidden="true" />
-                        Demo
+                        {t.demoBtn}
                       </a>
                     </div>
                   </>
