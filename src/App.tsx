@@ -136,11 +136,12 @@ function App() {
       icon: `${import.meta.env.BASE_URL}icons/maps.png`,
     },
     {
-      title: 'Microservices Platform',
-      description: 'Arquitectura de microservicios escalable con comunicación asíncrona, implementando Event Sourcing y CQRS.',
-      tech: ['Node.js', 'RabbitMQ', 'MongoDB', 'Kubernetes'],
-      github: '#',
-      demo: '#'
+      title: 'JS Event Loop Simulator',
+      description: 'Simulador visual e interactivo que muestra cómo funciona el Event Loop de JavaScript, incluyendo Call Stack, Web APIs, Microtask Queue y Callback Queue. Permite ejecutar código paso a paso o en modo automático, con log detallado y resumen final.',
+      tech: ['React', 'TypeScript', 'Zustand', 'Tailwind CSS'],
+      github: 'https://github.com/pmNiko/JS-Event-Loop-Simulator',
+      demo: 'https://pmniko.github.io/JS-Event-Loop-Simulator/',
+      icon: `${import.meta.env.BASE_URL}icons/js-simulator.webp`,
     },
     {
       title: 'DevOps Dashboard',
@@ -454,13 +455,13 @@ function App() {
                     : 'bg-white border-gray-200 hover:border-orange-600 hover:shadow-lg'
                 }`}
               >
-                {/* Custom layout for the first card */}
-                {index === 0 ? (
+                {/* Custom layout for the first two cards */}
+                {index === 0 || index === 1 ? (
                   <div className="flex flex-col gap-3">
                     <div className="flex items-center gap-3 mb-3">
                       <img 
                         src={project.icon} 
-                        alt="Ícono de MapApp" 
+                        alt={`Ícono de ${project.title}`} 
                         className="w-12 h-12 object-cover bg-gray-100 rounded shadow-sm" 
                         loading="lazy" 
                         onError={e => { e.currentTarget.style.display = 'none'; }}
@@ -512,7 +513,7 @@ function App() {
                         {t.commitBy}
                         <span className="mx-1 bg-gray-100 text-gray-900 px-1 rounded">pmNiko</span>
                         <span className="mx-1">·</span>
-                        {t.committedOn} Jan 28, 2023
+                        {index === 0 ? `${t.committedOn} Jan 28, 2023` : 'Implementación'}
                       </small>
                     </div>
                   </div>
