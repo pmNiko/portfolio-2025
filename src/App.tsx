@@ -323,7 +323,7 @@ function App() {
               </a>
 
               <a
-                href="https://cv-portfolio-nk.netlify.app/"
+                href="https://pmniko.github.io/minimalist-portfolio-json/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`flex-1 min-w-[150px] sm:flex-none inline-flex items-center justify-center gap-2 border-2 px-6 py-3 rounded-lg font-semibold group transition-all hover:scale-105 ${
