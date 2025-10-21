@@ -27,6 +27,7 @@ const translations = {
     badges: 'Medallas',
     mapappDesc: 'Aplicación de mapas interactiva desarrollada en React y TypeScript que permite buscar ubicaciones, generar rutas y visualizar caminos en San Martín de los Andes con integración de Mapbox.',
     jsSimulatorDesc: 'Simulador visual e interactivo que muestra cómo funciona el Event Loop de JavaScript, incluyendo Call Stack, Web APIs, Microtask Queue y Callback Queue. Permite ejecutar código paso a paso o en modo automático, con log detallado y resumen final.',
+    appsmaGobDesc: 'Plataforma modular de gestión municipal basada en microservicios y un meta framework propio construido sobre un monorepositorio multipaquete. Integra prácticas ágiles (Scrum + Kanban), Git Flow simplificado y CI/CD automatizado con GitHub Actions y Docker.',
     projects: 'Proyectos destacados',
     codeBtn: 'Código',
     demoBtn: 'Demo',
@@ -75,6 +76,7 @@ const translations = {
     badges: 'Badges',
     mapappDesc: 'Interactive map application built with React and TypeScript. Search locations, generate routes, and visualize paths in San Martín de los Andes with Mapbox integration.',
     jsSimulatorDesc: 'Visual and interactive simulator that shows how the JavaScript Event Loop works, including Call Stack, Web APIs, Microtask Queue and Callback Queue. Allows step-by-step or automatic code execution, with detailed logging and final summary.',
+    appsmaGobDesc: 'Modular municipal management platform based on microservices and a custom meta-framework built on a multi-package monorepo. Integrates agile practices (Scrum + Kanban), simplified Git Flow, and automated CI/CD with GitHub Actions and Docker.',
     projects: 'Featured Projects',
     codeBtn: 'Code',
     demoBtn: 'Demo',
@@ -144,6 +146,7 @@ function App() {
       github: 'https://github.com/pmNiko/MapApp',
       demo: 'https://maps-app-niko.netlify.app',
       icon: `${import.meta.env.BASE_URL}icons/maps.png`,
+      date: 'Jan 28, 2023',
     },
     {
       title: 'JS Event Loop Simulator',
@@ -152,6 +155,16 @@ function App() {
       github: 'https://github.com/pmNiko/JS-Event-Loop-Simulator',
       demo: 'https://pmniko.github.io/JS-Event-Loop-Simulator/',
       icon: `${import.meta.env.BASE_URL}icons/js-simulator.webp`,
+      date: 'Oct 19, 2025',
+    },
+    {
+      title: 'AppSmaGob',
+      descriptionKey: 'appsmaGobDesc',
+      tech: ['React','Typescript', 'CI/CD', 'GitHub Actions'],
+      github: '#',
+      demo: 'https://app.sma.gob.ar',
+      icon: `${import.meta.env.BASE_URL}icons/appsmagob.png`,
+      date: 'Oct 6, 2025',
     },
     {
       title: 'DevOps Dashboard',
@@ -160,13 +173,6 @@ function App() {
       github: '#',
       demo: '#'
     },
-    {
-      title: 'Database Migration Tool',
-      description: 'CLI tool para gestión de migraciones cross-database con rollback automático y validación de schemas.',
-      tech: ['TypeScript', 'PostgreSQL', 'MySQL', 'Redis'],
-      github: '#',
-      demo: '#'
-    }
   ];
 
   return (
@@ -472,7 +478,7 @@ function App() {
                 }`}
               >
                 {/* Custom layout for the first two cards */}
-                {index === 0 || index === 1 ? (
+                {index === 0 || index === 1 || index === 2 ? (
                   <div className="flex flex-col h-full">
                     <div className="flex items-center gap-3 mb-4">
                       <img 
@@ -505,15 +511,25 @@ function App() {
                     </div>
                     <div className="flex justify-between items-center mt-auto pt-4">
                       <div className="flex gap-4">
-                        <a
-                          href={project.github}
-                          className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
-                          aria-label={`${t.viewCode} ${project.title}`}
-                          target="_blank" rel="noopener noreferrer"
-                        >
-                          <Github size={18} aria-hidden="true" />
-                          {t.codeBtn}
-                        </a>
+                        {project.github === '#' ? (
+                          <span
+                            className={`inline-flex items-center gap-2 opacity-50 cursor-not-allowed ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}
+                            aria-label={`${t.viewCode} ${project.title} - No disponible`}
+                          >
+                            <Github size={18} aria-hidden="true" />
+                            {t.codeBtn}
+                          </span>
+                        ) : (
+                          <a
+                            href={project.github}
+                            className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
+                            aria-label={`${t.viewCode} ${project.title}`}
+                            target="_blank" rel="noopener noreferrer"
+                          >
+                            <Github size={18} aria-hidden="true" />
+                            {t.codeBtn}
+                          </a>
+                        )}
                         <a
                           href={project.demo}
                           className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
@@ -525,7 +541,7 @@ function App() {
                         </a>
                       </div>
                       <small className={`flex items-center gap-1 text-xs ${darkMode ? 'text-gray-400' : 'text-gray-800'}`} style={{fontFamily:'monospace'}}>
-                        {index === 0 ? 'Jan 28, 2023' : 'Oct 19, 2025'}
+                        {project.date || ''}
                       </small>
                     </div>
                   </div>
