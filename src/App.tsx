@@ -481,7 +481,7 @@ function App() {
                 className={`p-8 rounded-lg border transition-all flex flex-col ${
                   darkMode
                     ? 'bg-gray-800 border-gray-700 hover:border-orange-600 hover:shadow-lg hover:shadow-orange-600/20'
-                    : 'bg-white border-gray-200 hover:border-orange-600 hover:shadow-lg'
+                    : 'bg-white border-gray-300 hover:border-orange-600 hover:shadow-lg'
                 }`}
               >
                 {/* Custom layout for the first four cards */}
@@ -519,8 +519,10 @@ function App() {
                         {/* Primary Code button */}
                         {project.github === '#' ? (
                           <span
-                            className={`inline-flex items-center gap-2 opacity-50 cursor-not-allowed ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}
+                            className={`inline-flex items-center gap-2 select-none cursor-not-allowed ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}
                             aria-label={`${t.viewCode} ${project.title} - No disponible`}
+                            aria-disabled="true"
+                            role="button"
                           >
                             <Github size={18} aria-hidden="true" />
                             {t.codeBtn}
@@ -562,7 +564,7 @@ function App() {
                           )
                         )}
                       </div>
-                      <small className={`flex items-center gap-1 text-xs ${darkMode ? 'text-gray-400' : 'text-gray-800'}`} style={{fontFamily:'monospace'}}>
+                      <small className={`flex items-center gap-1 text-xs ${darkMode ? 'text-gray-300' : 'text-gray-800'}`} style={{fontFamily:'monospace'}}>
                         {project.date || ''}
                       </small>
                     </div>
