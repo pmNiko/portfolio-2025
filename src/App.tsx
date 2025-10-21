@@ -28,6 +28,7 @@ const translations = {
     mapappDesc: 'Aplicación de mapas interactiva desarrollada en React y TypeScript que permite buscar ubicaciones, generar rutas y visualizar caminos en San Martín de los Andes con integración de Mapbox.',
     jsSimulatorDesc: 'Simulador visual e interactivo que muestra cómo funciona el Event Loop de JavaScript, incluyendo Call Stack, Web APIs, Microtask Queue y Callback Queue. Permite ejecutar código paso a paso o en modo automático, con log detallado y resumen final.',
     appsmaGobDesc: 'Plataforma modular de gestión municipal basada en microservicios y un meta framework propio construido sobre un monorepositorio multipaquete. Integra prácticas ágiles (Scrum + Kanban), Git Flow simplificado y CI/CD automatizado con GitHub Actions y Docker.',
+    pythonLearningDesc: 'Experiencia formativa compartida con estudiantes a través de dos cursos complementarios: "Programación en Python" y "POO en Python". Ambos enfocados en bases de programación, estructuras de datos y principios de diseño orientado a objetos.',
     projects: 'Proyectos destacados',
     codeBtn: 'Código',
     demoBtn: 'Demo',
@@ -77,6 +78,7 @@ const translations = {
     mapappDesc: 'Interactive map application built with React and TypeScript. Search locations, generate routes, and visualize paths in San Martín de los Andes with Mapbox integration.',
     jsSimulatorDesc: 'Visual and interactive simulator that shows how the JavaScript Event Loop works, including Call Stack, Web APIs, Microtask Queue and Callback Queue. Allows step-by-step or automatic code execution, with detailed logging and final summary.',
     appsmaGobDesc: 'Modular municipal management platform based on microservices and a custom meta-framework built on a multi-package monorepo. Integrates agile practices (Scrum + Kanban), simplified Git Flow, and automated CI/CD with GitHub Actions and Docker.',
+    pythonLearningDesc: 'Educational experience shared with students through two complementary courses: "Programming in Python" and "OOP in Python". Both focused on programming fundamentals, data structures and object-oriented design principles.',
     projects: 'Featured Projects',
     codeBtn: 'Code',
     demoBtn: 'Demo',
@@ -139,15 +141,16 @@ function App() {
   ];
 
   const projects = [
-    {
-      title: 'MapApp',
-      descriptionKey: 'mapappDesc',
-      tech: ['React', 'TypeScript', 'Mapbox API'],
-      github: 'https://github.com/pmNiko/MapApp',
-      demo: 'https://maps-app-niko.netlify.app',
-      icon: `${import.meta.env.BASE_URL}icons/maps.png`,
-      date: 'Jan 28, 2023',
+      {
+      title: 'AppSmaGob',
+      descriptionKey: 'appsmaGobDesc',
+      tech: ['React','Typescript', 'CI/CD', 'GitHub Actions'],
+      github: '#',
+      demo: 'https://app.sma.gob.ar',
+      icon: `${import.meta.env.BASE_URL}icons/appsmagob.png`,
+      date: 'Oct 6, 2025',
     },
+  
     {
       title: 'JS Event Loop Simulator',
       descriptionKey: 'jsSimulatorDesc',
@@ -157,21 +160,25 @@ function App() {
       icon: `${import.meta.env.BASE_URL}icons/event-loop.png`,
       date: 'Oct 19, 2025',
     },
-    {
-      title: 'AppSmaGob',
-      descriptionKey: 'appsmaGobDesc',
-      tech: ['React','Typescript', 'CI/CD', 'GitHub Actions'],
-      github: '#',
-      demo: 'https://app.sma.gob.ar',
-      icon: `${import.meta.env.BASE_URL}icons/appsmagob.png`,
-      date: 'Oct 6, 2025',
+  
+      {
+      title: 'MapApp',
+      descriptionKey: 'mapappDesc',
+      tech: ['React', 'TypeScript', 'Mapbox API'],
+      github: 'https://github.com/pmNiko/MapApp',
+      demo: 'https://maps-app-niko.netlify.app',
+      icon: `${import.meta.env.BASE_URL}icons/maps.png`,
+      date: 'Jan 28, 2023',
     },
     {
-      title: 'DevOps Dashboard',
-      description: 'Dashboard centralizado para monitoreo de pipelines CI/CD, métricas de deployment y health checks en tiempo real.',
-      tech: ['React', 'Prometheus', 'Grafana', 'GitHub Actions'],
-      github: '#',
-      demo: '#'
+      title: 'Python Learning Path',
+      descriptionKey: 'pythonLearningDesc',
+      tech: ['Python', 'POO', 'Educación', 'GitHub'],
+      github: 'https://github.com/pmNiko/programacion-en-python',
+      demo: '#',
+      github2: 'https://github.com/pmNiko/POO-Python',
+      icon: `${import.meta.env.BASE_URL}icons/python.png`,
+      date: 'Dec 10, 2021',
     },
   ];
 
@@ -477,8 +484,8 @@ function App() {
                     : 'bg-white border-gray-200 hover:border-orange-600 hover:shadow-lg'
                 }`}
               >
-                {/* Custom layout for the first two cards */}
-                {index === 0 || index === 1 || index === 2 ? (
+                {/* Custom layout for the first four cards */}
+                {index === 0 || index === 1 || index === 2 || index === 3 ? (
                   <div className="flex flex-col h-full">
                     <div className="flex items-center gap-3 mb-4">
                       <img 
@@ -491,9 +498,7 @@ function App() {
                       <h3 className={`text-2xl font-bold ${darkMode ? 'text-white' : ''}`}>{project.title}</h3>
                     </div>
                     <p className={`mb-4 leading-relaxed flex-grow ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
-                      {project.descriptionKey && typeof t[project.descriptionKey as keyof typeof t] === 'string'
-                        ? t[project.descriptionKey as keyof typeof t] as string
-                        : project.description || ''}
+                      {t[project.descriptionKey as keyof typeof t] as string}
                     </p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.tech.map((tech, i) => (
@@ -511,6 +516,7 @@ function App() {
                     </div>
                     <div className="flex justify-between items-center mt-auto pt-4">
                       <div className="flex gap-4">
+                        {/* Primary Code button */}
                         {project.github === '#' ? (
                           <span
                             className={`inline-flex items-center gap-2 opacity-50 cursor-not-allowed ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}
@@ -530,59 +536,38 @@ function App() {
                             {t.codeBtn}
                           </a>
                         )}
-                        <a
-                          href={project.demo}
-                          className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
-                          aria-label={`${t.viewDemo} ${project.title}`}
-                          target="_blank" rel="noopener noreferrer"
-                        >
-                          <ExternalLink size={18} aria-hidden="true" />
-                          {t.demoBtn}
-                        </a>
+
+                        {/* Secondary Code button when github2 is provided */}
+                        {'github2' in project && (project as any).github2 ? (
+                          <a
+                            href={(project as any).github2}
+                            className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
+                            aria-label={`${t.viewCode} ${project.title} (2)`}
+                            target="_blank" rel="noopener noreferrer"
+                          >
+                            <Github size={18} aria-hidden="true" />
+                            {t.codeBtn}
+                          </a>
+                        ) : (
+                          project.demo && project.demo !== '#' && (
+                            <a
+                              href={project.demo}
+                              className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
+                              aria-label={`${t.viewDemo} ${project.title}`}
+                              target="_blank" rel="noopener noreferrer"
+                            >
+                              <ExternalLink size={18} aria-hidden="true" />
+                              {t.demoBtn}
+                            </a>
+                          )
+                        )}
                       </div>
                       <small className={`flex items-center gap-1 text-xs ${darkMode ? 'text-gray-400' : 'text-gray-800'}`} style={{fontFamily:'monospace'}}>
                         {project.date || ''}
                       </small>
                     </div>
                   </div>
-                ) : (
-                  <>
-                    <h3 className={`text-2xl font-bold mb-3 ${darkMode ? 'text-white' : ''}`}>{project.title}</h3>
-                    <p className={`mb-4 leading-relaxed ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tech.map((tech, i) => (
-                        <span
-                          key={i}
-                          className={`text-sm px-3 py-1 rounded-full ${
-                            darkMode
-                              ? 'bg-gray-700 text-gray-200'
-                              : 'bg-gray-100 text-gray-700'
-                          }`}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex gap-4">
-                      <a
-                        href={project.github}
-                        className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
-                        aria-label={`${t.viewCode} ${project.title}`}
-                      >
-                        <Github size={18} aria-hidden="true" />
-                        {t.codeBtn}
-                      </a>
-                      <a
-                        href={project.demo}
-                        className={`inline-flex items-center gap-2 transition-colors ${darkMode ? 'text-gray-300 hover:text-orange-600' : 'text-gray-600 hover:text-orange-600'}`}
-                        aria-label={`${t.viewDemo} ${project.title}`}
-                      >
-                        <ExternalLink size={18} aria-hidden="true" />
-                        {t.demoBtn}
-                      </a>
-                    </div>
-                  </>
-                )}
+                ) : null}
               </div>
             ))}
           </div>
