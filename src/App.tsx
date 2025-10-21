@@ -525,9 +525,6 @@ function App() {
                         </a>
                       </div>
                       <small className={`flex items-center gap-1 text-xs ${darkMode ? 'text-gray-400' : 'text-gray-800'}`} style={{fontFamily:'monospace'}}>
-                        <Github size={14} className="inline-block mr-1" aria-hidden="true" />
-                        <span className="mx-1 bg-gray-100 text-gray-900 px-1 rounded">pmNiko</span>
-                        <span className="mx-1">·</span>
                         {index === 0 ? 'Jan 28, 2023' : 'Oct 19, 2025'}
                       </small>
                     </div>
