@@ -414,18 +414,18 @@ function App() {
           <h2 className={`text-4xl font-bold mb-12 ${darkMode ? 'text-white' : ''}`}>{t.badges}</h2>
           <div className="grid grid-cols-4 md:grid-cols-7 gap-4">
             {[
-              { name: 'Node.js', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-              { name: 'TypeScript', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
-              { name: 'SOLID', url: 'https://res.cloudinary.com/dl1k2dee0/image/upload/v1701878258/courses/solid/badge/solid.svg' },
+              { name: 'Node.js', url: './icons/badges/nodejs-original.svg' },
+              { name: 'TypeScript', url: './icons/badges/typescript-original.svg' },
+              { name: 'SOLID', url: './icons/badges/solid.svg' },
               { name: 'Testing', url: './icons/jest-js-icon.png' },
-              { name: 'Express', url: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg' },
-              { name: 'React', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-              { name: 'Next.js', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
-              { name: 'Zustand', url: 'https://user-images.githubusercontent.com/958486/218346783-72be5ae3-b953-4dd7-b239-788a882fdad6.svg' },
-              { name: 'RxJS', url: 'https://rxjs.dev/assets/images/logos/Rx_Logo_S.png' },
-              { name: 'PostgreSQL', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
-              { name: 'Docker', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-              { name: 'Python', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+              { name: 'Express', url: './icons/badges/express-original.svg' },
+              { name: 'React', url: './icons/badges/react-original.svg' },
+              { name: 'Next.js', url: './icons/badges/nextjs-original.svg' },
+              { name: 'Zustand', url: './icons/badges/zustand.svg' },
+              { name: 'RxJS', url: './icons/badges/rxjs-logo.png' },
+              { name: 'PostgreSQL', url: './icons/badges/postgresql-original.svg' },
+              { name: 'Docker', url: './icons/badges/docker-original.svg' },
+              { name: 'Python', url: './icons/badges/python-original.svg' },
               { name: 'AI', url: './icons/ia-badge.png' },
               { name: 'n8n', svg: true },
             ].map((badge, index) => (
@@ -459,6 +459,10 @@ function App() {
                     width={32}
                     height={32}
                     className="group-hover:scale-125 transition-transform"
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
+                    referrerPolicy="no-referrer"
                   />
                 )}
                 <span className={`text-xs font-semibold text-center line-clamp-2 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>
