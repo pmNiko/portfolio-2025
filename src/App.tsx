@@ -154,7 +154,7 @@ function App() {
       tech: ['React', 'TypeScript', 'Zustand', 'Tailwind CSS'],
       github: 'https://github.com/pmNiko/JS-Event-Loop-Simulator',
       demo: 'https://pmniko.github.io/JS-Event-Loop-Simulator/',
-      icon: `${import.meta.env.BASE_URL}icons/js-simulator.webp`,
+      icon: `${import.meta.env.BASE_URL}icons/event-loop.png`,
       date: 'Oct 19, 2025',
     },
     {
