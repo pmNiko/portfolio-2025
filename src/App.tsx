@@ -192,8 +192,14 @@ function App() {
               }`}
               aria-label="Ir al inicio"
             >
-              <Code2 size={28} className="text-orange-600" aria-hidden="true" />
-              Niko.dev
+              <img 
+                src={`${import.meta.env.BASE_URL}icons/nk2.png`}
+                alt="Niko.dev logo" 
+                className={`w-16 h-16 object-contain transition-all -my-4 ${
+                  darkMode ? '' : 'drop-shadow-[0_0_3px_rgba(0,0,0)]'
+                }`}
+                aria-hidden="true"
+              />
             </button>
 
             {/* Desktop Menu */}
@@ -303,7 +309,7 @@ function App() {
       <section id="home" className={`pt-32 pb-20 px-6 transition-colors duration-300 ${darkMode ? 'bg-gray-900' : ''}`}>
         <div className="max-w-6xl mx-auto">
           <div className="max-w-3xl">
-            <h1 className={`text-5xl md:text-7xl font-bold mb-6 leading-tight ${darkMode ? 'text-white' : ''}`}>
+            <h1 className={`text-5xl md:text-7xl font-bold mb-6 leading-tight animate-fade-in-up ${darkMode ? 'text-white' : ''}`}>
               {t.hero.name}
             </h1>
             <h2 className={`text-2xl md:text-3xl mb-6 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
@@ -771,7 +777,7 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className={`py-8 px-6 border-t transition-colors duration-300 ${
+      {/* <footer className={`py-8 px-6 border-t transition-colors duration-300 ${
         darkMode
           ? 'border-gray-700 bg-gray-800'
           : 'border-gray-200 bg-white'
@@ -779,7 +785,7 @@ function App() {
   <div className={`max-w-6xl mx-auto text-center ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>
           <p>{t.footer}</p>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }
